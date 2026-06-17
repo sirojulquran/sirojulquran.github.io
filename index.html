@@ -7,52 +7,108 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
-        tailwind.config={theme:{extend:{colors:{utama:'#0F766E',sekunder:'#F59E0B',gelap:'#1E293B',abu:'#64748B'}}}}
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        utama: '#0F766E',
+                        sekunder: '#F59E0B',
+                        gelap: '#1E293B',
+                        abu: '#64748B'
+                    }
+                }
+            }
+        }
     </script>
-    <style>body{font-family:Inter,sans-serif;scroll-behavior:smooth;}*{margin:0;padding:0;box-sizing:border-box;}</style>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
 <body class="text-gelap bg-gray-50">
 
-<nav class="fixed w-full bg-white/95 shadow-md z-50 py-3 px-4 flex justify-between items-center">
-    <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-utama text-white rounded-lg flex items-center justify-center font-bold">SQ</div>
-        <span class="text-xl font-bold text-utama">Sirojul Qur'an</span>
-    </div>
-</nav>
-
-<section class="pt-28 pb-20 bg-gradient-to-br from-utama/10 to-sekunder/10 px-4">
-    <div class="max-w-6xl mx-auto text-center">
-        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-4">Selamat Datang di Sirojul Qur'an</h1>
-        <p class="text-lg text-abu max-w-2xl mx-auto mb-8">Lembaga Pendidikan Islam | Pamuruyan - Cibadak - Sukabumi</p>
-        <a href="#kontak" class="bg-utama text-white px-8 py-3 rounded-lg">Hubungi Kami</a>
-    </div>
-</section>
-
-<section id="tentang" class="py-20 bg-white px-4">
-    <div class="max-w-4xl mx-auto">
-        <h2 class="text-center text-3xl font-bold mb-6">Tentang Kami</h2>
-        <div class="w-20 h-1 bg-utama mx-auto mb-8"></div>
-        <p class="text-lg mb-4"><strong>Visi:</strong> Menciptakan manusia unggul dan beriman</p>
-        <p class="text-lg mb-4"><strong>Program:</strong> MDT (Madrasah Diniyah Takmiliyah)</p>
-        <p class="text-lg"><strong>Alamat:</strong> Pamuruyan, Kec. Cibadak, Kab. Sukabumi, Jawa Barat</p>
-    </div>
-</section>
-
-<section id="kontak" class="py-20 bg-gray-50 px-4">
-    <div class="max-w-4xl mx-auto">
-        <h2 class="text-center text-3xl font-bold mb-6">Kontak</h2>
-        <div class="w-20 h-1 bg-utama mx-auto mb-8"></div>
-        <div class="bg-white p-6 rounded-xl shadow-lg">
-            <p class="mb-3"><i class="fa fa-map-marker text-utama mr-2"></i> Pamuruyan - Cibadak - Sukabumi</p>
-            <p class="mb-3"><i class="fa fa-phone text-utama mr-2"></i> +62 8XX-XXXX-XXXX</p>
-            <p><i class="fa fa-envelope text-utama mr-2"></i> info@sirojulquran.or.id</p>
+    <!-- Navigasi -->
+    <nav class="fixed w-full bg-white/95 shadow-md z-50 py-3 px-4">
+        <div class="flex justify-between items-center max-w-6xl mx-auto">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-utama text-white rounded-lg flex items-center justify-center font-bold text-lg">SQ</div>
+                <span class="text-xl font-bold text-utama">Sirojul Qur'an</span>
+            </div>
+            <div class="hidden md:flex gap-6">
+                <a href="#beranda" class="font-medium hover:text-utama">Beranda</a>
+                <a href="#tentang" class="font-medium hover:text-utama">Tentang</a>
+                <a href="#program" class="font-medium hover:text-utama">Program</a>
+                <a href="#kontak" class="font-medium hover:text-utama">Kontak</a>
+            </div>
         </div>
-    </div>
-</section>
+    </nav>
 
-<footer class="bg-gelap text-white/80 py-8 text-center">
-    <p>&copy; 2026 Sirojul Qur'an | Menciptakan manusia unggul dan beriman</p>
-</footer>
+    <!-- Beranda -->
+    <section id="beranda" class="pt-28 pb-20 bg-gradient-to-br from-utama/10 to-sekunder/10 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight mb-4">Selamat Datang di <span class="text-utama">Sirojul Qur'an</span></h1>
+            <p class="text-lg text-abu max-w-2xl mx-auto mb-8">Lembaga Pendidikan Islam | Pamuruyan - Cibadak - Sukabumi</p>
+            <a href="#kontak" class="bg-utama hover:bg-utama/90 text-white px-8 py-3 rounded-lg shadow-lg transition">Hubungi Kami</a>
+        </div>
+    </section>
+
+    <!-- Tentang Kami -->
+    <section id="tentang" class="py-20 bg-white px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-center text-3xl font-bold mb-2">Tentang Kami</h2>
+            <div class="w-20 h-1 bg-utama mx-auto mb-8 rounded-full"></div>
+            
+            <p class="text-lg mb-4">
+              <strong class="text-utama font-semibold">✨ Visi:</strong><br>
+              "Mewujudkan lembaga pendidikan Islam yang unggul, berkualitas, dan melahirkan generasi muda yang beriman, bertakwa, berakhlak mulia, serta cinta dan mampu mengamalkan Al-Qur'an dalam kehidupan sehari-hari."
+            </p>
+
+            <p class="text-lg">
+              <strong class="text-utama font-semibold">🎯 Misi:</strong><br>
+              1. Menyelenggarakan pendidikan agama Islam yang terstruktur dan berkualitas.<br>
+              2. Menanamkan nilai iman dan takwa kepada Allah SWT sejak dini.<br>
+              3. Membimbing santri agar mampu membaca, memahami, dan mengamalkan Al-Qur'an.<br>
+              4. Membentuk karakter santri yang berakhlak mulia, mandiri, dan disiplin.<br>
+              5. Mengembangkan kegiatan keagamaan yang bermanfaat bagi masyarakat.<br>
+              6. Menjalin kerjasama yang baik dengan orang tua dan lingkungan sekitar.
+            </p>
+        </div>
+    </section>
+
+    <!-- Program -->
+    <section id="program" class="py-20 bg-gray-50 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-2">Program Unggulan</h2>
+            <div class="w-20 h-1 bg-utama mx-auto mb-8 rounded-full"></div>
+            
+            <div class="bg-white p-8 rounded-xl shadow-lg max-w-md mx-auto">
+                <div class="w-16 h-16 bg-utama/10 text-utama rounded-full flex items-center justify-center text-2xl mb-4 mx-auto">
+                    <i class="fa fa-book-reader"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-utama mb-2">MDT</h3>
+                <p class="text-abu">Madrasah Diniyah Takmiliyah<br>Pendidikan dasar agama Islam untuk anak-anak & remaja</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" class="py-20 bg-white px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-center text-3xl font-bold mb-2">Hubungi Kami</h2>
+            <div class="w-20 h-1 bg-utama mx-auto mb-8 rounded-full"></div>
+            
+            <div class="bg-gray-50 p-6 rounded-xl shadow-lg space-y-4">
+                <p class="flex items-center gap-3"><i class="fa fa-map-marker text-utama text-xl"></i> Pamuruyan - Cibadak - Sukabumi</p>
+                <p class="flex items-center gap-3"><i class="fa fa-phone text-utama text-xl"></i> +62 8XX-XXXX-XXXX</p>
+                <p class="flex items-center gap-3"><i class="fa fa-envelope text-utama text-xl"></i> info@sirojulquran.or.id</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gelap text-white/80 py-6 text-center px-4">
+        <p>&copy; 2026 Sirojul Qur'an | Menciptakan manusia unggul dan beriman</p>
+    </footer>
 
 </body>
 </html>
