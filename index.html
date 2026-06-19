@@ -139,18 +139,22 @@
 </body>
 </html>
     <style>
-/* Latar semua hijau muda ginclong */
+/* Latar hijau muda semua */
 html, body {
   background: #eafaf1 !important;
   background-color: #eafaf1 !important;
   color: #000000 !important;
 }
 
-/* Kotak luar saja (bingkai halaman) */
-.wrapper, .container, main, body {
-  border: 2px solid #66bb6a !important;
-  padding: 15px !important;
-  margin: 0 auto !important;
-  border-radius: 6px !important;
-  max-width: 100% !important;
+/* HANYA KOTAK LUAR AJA */
+body {
+  border: 2px solid #388e3c !important;
+  margin: 10px !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
 }
+
+/* DALAMNYA DIBIKIN POLOS TOTAL */
+div, header, section, main, * {
+  border: none !important;
+  background: transparent !important;
