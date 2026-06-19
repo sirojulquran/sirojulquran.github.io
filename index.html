@@ -138,12 +138,19 @@
 
 </body>
 </html>
-        <style>
-html, body, div, span, section, header, footer, main, nav, .bg-gradient-to-b, .from-green-50, .to-white, * {
-  background-color: #eafaf1 !important;
+    <style>
+/* Latar semua hijau muda ginclong */
+html, body {
   background: #eafaf1 !important;
+  background-color: #eafaf1 !important;
   color: #000000 !important;
-  border: 1px solid #81c784 !important; /* Garis hijau agak tegas biar kelihatan */
-  box-shadow: none !important;
 }
-</style>
+
+/* Kotak luar saja (bingkai halaman) */
+.wrapper, .container, main, body {
+  border: 2px solid #66bb6a !important;
+  padding: 15px !important;
+  margin: 0 auto !important;
+  border-radius: 6px !important;
+  max-width: 100% !important;
+}
