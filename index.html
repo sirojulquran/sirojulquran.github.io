@@ -19,7 +19,7 @@ hijaumuda: '#ECFDF5',
 hijaulenbut: '#D1FAE5'
 },
 fontFamily: {
-inter: ['Inter', 'sans-serif'],
+  inter: ['Inter', 'sans-serif'],
 }
 }
 }
@@ -27,9 +27,8 @@ inter: ['Inter', 'sans-serif'],
 </script>
 <style type="text/tailwindcss">
 @layer utilities {
-.text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.lembut { transition: all 0.3s ease; }
-.bg-polos { background-color: #ECFDF5; }
+  .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+  .lembut { transition: all 0.3s ease; }
 }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,43 +37,48 @@ inter: ['Inter', 'sans-serif'],
 
 <style>
 html { 
-scroll-behavior: smooth; 
+  scroll-behavior: smooth; 
 }
 body { 
-font-family: 'Inter', sans-serif;
-background-color: #ECFDF5;
-}
-
-.latar-hijau {
-background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
 }
 
 .kotak-elegan {
-box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.1), 0 8px 10px -6px rgba(15, 118, 110, 0.05);
-transition: all 0.4s ease;
+  box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.1), 0 8px 10px -6px rgba(15, 118, 110, 0.05);
+  transition: all 0.4s ease;
 }
 .kotak-elegan:hover {
-transform: translateY(-5px);
-box-shadow: 0 20px 25px -5px rgba(15, 118, 110, 0.15), 0 10px 10px -5px rgba(15, 118, 110, 0.08);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(15, 118, 110, 0.15), 0 10px 10px -5px rgba(15, 118, 110, 0.08);
 }
 
-/* Efek tombol IG */
 .btn-ig {
-background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
 }
 .btn-ig:hover {
-transform: scale(1.05);
-box-shadow: 0 8px 20px rgba(220, 39, 67, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(220, 39, 67, 0.25);
+}
+
+.alamat-maps {
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.alamat-maps:hover {
+  color: #0F766E;
+  text-decoration: underline;
 }
 </style>
 </head>
-<body class="text-gelap latar-hijau">
+<body class="text-gelap">
 
-<!-- Navigasi -->
+<!-- Navigasi DENGAN LOGO -->
 <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-lg z-50 py-3 px-4 lembut">
 <div class="flex justify-between items-center max-w-6xl mx-auto">
 <div class="flex items-center gap-3">
-<div class="w-11 h-11 bg-utama text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-md lembut hover:scale-105">SQ</div>
+<img src="https://sirojulquran.github.io/logo.png" alt="Logo Sirojul Qur'an" class="w-12 h-12 rounded-lg shadow-md lembut hover:scale-105">
 <span class="text-xl font-bold text-utama text-shadow">Sirojul Qur'an</span>
 </div>
 <div class="hidden md:flex gap-8">
@@ -86,12 +90,15 @@ box-shadow: 0 8px 20px rgba(220, 39, 67, 0.25);
 </div>
 </nav>
 
-<!-- Beranda -->
+<!-- Beranda TANPA KALIMAT TERSEBUT -->
 <section id="beranda" class="pt-32 pb-24 px-4">
 <div class="max-w-6xl mx-auto text-center">
 <div class="inline-block mb-4 px-4 py-2 bg-utama/10 text-utama rounded-full text-sm font-medium">✨ Selamat Datang di Lembaga Pendidikan Islam</div>
-<h1 class="text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight mb-5 text-shadow">Mencetak Generasi <span class="text-utama">Qur'ani</span></h1>
-<p class="text-lg text-abu max-w-2xl mx-auto mb-10 font-normal">Lembaga Pendidikan Islam Sirojul Qur'an | Pamuruyan - Cibadak - Sukabumi</p>
+
+<img src="https://sirojulquran.github.io/foto-lembaga.jpg" alt="Sirojul Qur'an" class="max-w-full h-auto rounded-2xl shadow-xl mb-8 kotak-elegan mx-auto">
+
+<h1 class="text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight mb-5 text-shadow">Selamat Datang di <span class="text-utama">Sirojul Qur'an</span></h1>
+<p class="text-lg text-abu max-w-2xl mx-auto mb-10 font-normal">Lembaga Pendidikan Islam | Pamuruyan - Cibadak - Sukabumi</p>
 <a href="#tentang" class="bg-utama hover:bg-utama/90 text-white px-8 py-3.5 rounded-xl font-semibold shadow-lg lembut hover:scale-105 inline-block">Pelajari Lebih Lanjut</a>
 </div>
 </section>
@@ -141,21 +148,24 @@ box-shadow: 0 8px 20px rgba(220, 39, 67, 0.25);
 </div>
 </section>
 
-<!-- Kontak -->
+<!-- Kontak DENGAN GOOGLE MAPS & IG -->
 <section id="kontak" class="py-20 bg-hijaulenbut/40 backdrop-blur-sm px-4 rounded-t-[3rem] kotak-elegan">
 <div class="max-w-4xl mx-auto">
 <h2 class="text-center text-3xl md:text-4xl font-bold mb-2 text-shadow">Hubungi Kami</h2>
 <div class="w-24 h-1.5 bg-utama mx-auto mb-10 rounded-full"></div>
 
 <div class="bg-white/80 p-8 md:p-10 rounded-2xl shadow-lg space-y-6 kotak-elegan">
-<p class="flex items-center gap-4 text-lg"><i class="fa fa-map-marker text-utama text-2xl w-8 text-center"></i> Kp. Ongkrak, Desa Pamuruyan, Kec. Cibadak, Kab. Sukabumi - Jawa Barat</p>
+<a href="https://www.google.com/maps/search/?api=1&query=Kp.+Ongkrak,+Desa+Pamuruyan,+Kec.+Cibadak,+Kab.+Sukabumi+-+Jawa+Barat" target="_blank" class="flex items-center gap-4 text-lg alamat-maps">
+<i class="fa fa-map-marker text-utama text-2xl w-8 text-center"></i> 
+Kp. Ongkrak, Desa Pamuruyan, Kec. Cibadak, Kab. Sukabumi - Jawa Barat
+</a>
+
 <p class="flex items-center gap-4 text-lg"><i class="fa fa-phone text-utama text-2xl w-8 text-center"></i> +62 8XX-XXXX-XXXX</p>
 <p class="flex items-center gap-4 text-lg"><i class="fa fa-envelope text-utama text-2xl w-8 text-center"></i> info@sirojulquran.or.id</p>
 
-<!-- TOMBOL INSTAGRAM BARU -->
 <a href="https://www.instagram.com/p/DUpybvYE9u9/?igsh=ZjFkYzMzMDQzZg==" target="_blank" class="btn-ig text-white px-6 py-3 rounded-xl font-semibold shadow-md flex items-center justify-center gap-3 lembut">
-<i class="fa fa-instagram text-xl"></i>
-<span>Ikuti Kami di Instagram</span>
+  <i class="fa fa-instagram text-xl"></i>
+  <span>Ikuti Kami di Instagram</span>
 </a>
 
 </div>
@@ -165,7 +175,7 @@ box-shadow: 0 8px 20px rgba(220, 39, 67, 0.25);
 
 <!-- Footer -->
 <footer class="bg-utama text-white/90 py-8 text-center px-4 rounded-t-[3rem] shadow-inner">
-<p class="font-medium text-lg">© 2026 Sirojul Qur'an | Mencetak Generasi Qur'ani Berakhlak Mulia</p>
+<p class="font-medium text-lg">© 2026 Sirojul Qur'an</p>
 <p class="text-sm text-white/70 mt-2">Dibangun dengan penuh ❤️ untuk kemajuan umat</p>
 </footer>
 
