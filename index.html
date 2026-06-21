@@ -184,10 +184,19 @@
             box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
         }
 
+        /* === TENTANG KAMI === */
+        #tentang p {
+            font-size: 17px;
+        }
+
         /* === PROGRAM === */
+        #program {
+            margin-bottom: 50px;
+        }
+
         .program-tengah {
             max-width: 420px;
-            margin: 0 auto;
+            margin: 0 auto 40px;
             text-align: center;
         }
 
@@ -205,18 +214,30 @@
             font-size: 22px;
         }
 
-        /* === TENTANG KAMI - GEDUNG === */
-        .tentang-gedung {
-            text-align: center;
-            margin: 30px 0;
+        /* === GALERI FOTO DI BAWAH PROGRAM === */
+        .galeri-foto {
+            display: grid;
+            gap: 30px;
+            margin-top: 20px;
         }
 
-        .tentang-gedung img {
+        .foto-item {
+            text-align: center;
+        }
+
+        .foto-item img {
             width: 100%;
-            max-width: 700px;
+            max-width: 750px;
             border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             object-fit: cover;
+        }
+
+        .foto-item p {
+            margin-top: 10px;
+            font-weight: 500;
+            color: #0F766E;
+            font-size: 16px;
         }
 
         /* === KONTAK === */
@@ -290,18 +311,13 @@
         <a href="#tentang" class="btn-hijau">Pelajari Lebih Lanjut</a>
     </section>
 
-    <!-- TENTANG KAMI - GEDUNG: Gedung.png -->
+    <!-- TENTANG KAMI -->
     <section id="tentang">
         <h2>Tentang Kami</h2>
         <div class="kotak-elegan">
             <p><strong style="color:#0F766E; font-size:20px;">✨ Visi:</strong><br>
             "Mewujudkan lembaga pendidikan Islam yang unggul, berkualitas, dan melahirkan generasi muda yang beriman, bertakwa, berakhlak mulia, serta cinta dan mampu mengamalkan Al-Qur'an dalam kehidupan sehari-hari."</p>
         </div>
-
-        <div class="tentang-gedung">
-            <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
-        </div>
-
         <div class="kotak-elegan">
             <p><strong style="color:#0F766E; font-size:20px;">🎯 Misi:</strong><br>
             1. Menyelenggarakan pendidikan agama Islam yang terstruktur dan berkualitas.<br>
@@ -313,13 +329,25 @@
         </div>
     </section>
 
-    <!-- PROGRAM - KBM: kbm.png -->
+    <!-- PROGRAM UNGGULAN - TETAP PAKAI kbm.png ✅ -->
     <section id="program">
         <h2>Program Unggulan</h2>
         <div class="kotak-elegan program-tengah">
             <img src="kbm.png" alt="Kegiatan Belajar Mengajar">
             <h3>MDT Sirojul Qur'an</h3>
             <p style="color:#64748B;">Madrasah Diniyah Takmiliyah<br>Pendidikan dasar agama Islam untuk anak-anak & remaja agar berilmu dan berakhlak mulia.</p>
+        </div>
+
+        <!-- ✅ DI BAWAHNYA: URUTAN GEDUNG → DEWAN GURU (TANPA MURID) ✅ -->
+        <div class="galeri-foto">
+            <div class="foto-item">
+                <img src="Gedung.png" alt="Gedung Lembaga Sirojul Qur'an">
+                <p>Gedung Lembaga</p>
+            </div>
+            <div class="foto-item">
+                <img src="pengurus.png" alt="Dewan Guru & Pengawas">
+                <p>Dewan Guru & Pengawas</p>
+            </div>
         </div>
     </section>
 
