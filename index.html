@@ -142,6 +142,14 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
+        /* === JUDUL "ACARA KEGIATAN" DI ATAS SLIDER === */
+        .judul-slider {
+            font-size: 22px;
+            color: #0F766E;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
         /* === SLIDER FOTO - PENGATURAN SENTUH === */
         .slider-wadah {
             width: 100%;
@@ -179,7 +187,7 @@
             user-select: none;
         }
 
-        /* TULISAN DI DALAM FOTO */
+        /* TULISAN DI DALAM FOTO - HANYA UNTUK KBM DAN GEDUNG */
         .teks-di-foto {
             position: absolute;
             bottom: 0;
@@ -373,17 +381,20 @@
         <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
 
-        <!-- 2. SLIDER FOTO - URUTAN: KNK1 PALING BARU -->
+        <!-- 2. JUDUL "ACARA KEGIATAN" DI ATAS SLIDER -->
+        <div class="judul-slider">Acara Kegiatan</div>
+
+        <!-- 3. SLIDER FOTO - URUTAN: KNK1 PALING BARU -->
         <div class="slider-wadah" id="areaGeser">
             <div class="slider-isi" id="slider">
                 <!-- ✅ URUTAN BENAR: KNK1 DI ATAS/PALING DEPAN -->
                 <div class="slide">
                     <img src="knk1.jpg" alt="Kegiatan Terbaru">
-                    <div class="teks-di-foto">Kegiatan Terbaru</div>
+                    <!-- TIDAK ADA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="knk2.jpg" alt="Kegiatan Keagamaan">
-                    <div class="teks-di-foto">Kegiatan Keagamaan</div>
+                    <!-- TIDAK ADA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="kbm.png" alt="Kegiatan Belajar Mengajar">
@@ -391,7 +402,7 @@
                 </div>
                 <div class="slide">
                     <img src="pengurus.png" alt="Struktur Pengurus">
-                    <div class="teks-di-foto">Struktur Pengurus</div>
+                    <!-- TIDAK ADA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
@@ -400,7 +411,7 @@
             </div>
         </div>
 
-        <!-- 3. TITIK PENANDA -->
+        <!-- 4. TITIK PENANDA -->
         <div class="titik-wadah">
             <span class="titik aktif"></span>
             <span class="titik"></span>
@@ -409,7 +420,7 @@
             <span class="titik"></span>
         </div>
 
-        <!-- 4. ALAMAT -->
+        <!-- 5. ALAMAT -->
         <div class="alamat-bawah">
             Lembaga Pendidikan Islam | Pamuruyan<br>
             - Cibadak - Sukabumi
