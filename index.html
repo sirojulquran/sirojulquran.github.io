@@ -149,13 +149,32 @@
             line-height: 1.5;
         }
 
-        .foto-tampilan {
+        .foto-wadah {
+            position: relative;
             width: 100%;
             max-width: 800px;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             margin: 20px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .foto-wadah img {
+            width: 100%;
             display: block;
+        }
+
+        .teks-di-foto {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 118, 110, 0.75);
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 18px;
+            font-weight: bold;
         }
 
         .btn-hijau {
@@ -181,6 +200,30 @@
         /* === TENTANG KAMI === */
         #tentang p {
             font-size: 17px;
+        }
+
+        .foto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .foto-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .foto-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .foto-item .teks-di-foto {
+            font-size: 16px;
+            padding: 10px 0;
         }
 
         /* === PROGRAM === */
@@ -281,7 +324,7 @@
 </head>
 <body>
 
-    <!-- NAVIGASI - LOGO SAJA, TANPA TULISAN DI SAMPINGNYA -->
+    <!-- NAVIGASI - LOGO SAJA -->
     <nav>
         <div class="nav-container">
             <div class="nav-kiri">
@@ -299,7 +342,10 @@
     <section id="beranda">
         <div class="tag-selamat">✨ Selamat Datang di Lembaga Pendidikan Islam</div>
         
-        <img src="gambar.jpg" alt="Dewan Guru & Pengawas Sirojul Qur'an" class="foto-tampilan">
+        <div class="foto-wadah">
+            <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
+            <div class="teks-di-foto">Gedung Lembaga Pendidikan Islam Sirojul Qur'an</div>
+        </div>
         
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
         <div class="alamat-bawah">
@@ -324,6 +370,17 @@
             4. Membentuk karakter santri yang berakhlak mulia, mandiri, dan disiplin.<br>
             5. Mengembangkan kegiatan keagamaan yang bermanfaat bagi masyarakat.<br>
             6. Menjalin kerjasama yang baik dengan orang tua dan lingkungan sekitar.</p>
+            
+            <div class="foto-grid">
+                <div class="foto-item">
+                    <img src="pengurus.png" alt="Pengurus Sirojul Qur'an">
+                    <div class="teks-di-foto">Struktur Pengurus</div>
+                </div>
+                <div class="foto-item">
+                    <img src="kbm.png" alt="Kegiatan Belajar Mengajar">
+                    <div class="teks-di-foto">Kegiatan Belajar Mengajar</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -339,13 +396,13 @@
             </div>
 
             <div class="program-item">
-                <h4>4. Pendidikan Akhlakul Karimah dan Karakter</h4>
+                <h4>2. Pendidikan Akhlakul Karimah dan Karakter</h4>
                 <p><span class="label-praktik">Praktik:</span> Bimbingan penerapan adab sehari-hari (sopan santun kepada guru dan orang tua), pembiasaan sholat berjamaah, infaq, dan dzikir bersama.</p>
                 <p><span class="label-keunggulan">Keunggulan:</span> Menjamin seimbang antara kecerdasan intelektual dan spiritual serta budi pekerti yang luhur.</p>
             </div>
 
             <div class="program-item">
-                <h4>5. Praktik Ibadah dan Keterampilan Keagamaan</h4>
+                <h4>3. Praktik Ibadah dan Keterampilan Keagamaan</h4>
                 <p><span class="label-praktik">Praktik:</span> Bimbingan intensif tata cara bersuci (Thaharah), sholat jenazah, praktik manasik haji, serta public speaking seperti bimbingan menjadi Da'i cilik (pildacil) dan pembacaan doa/tahlil.</p>
                 <p><span class="label-keunggulan">Keunggulan:</span> Mempersiapkan siswa agar siap dan percaya diri dalam bermasyarakat serta berpartisipasi aktif dalam kegiatan keagamaan di lingkungan lokal.</p>
             </div>
