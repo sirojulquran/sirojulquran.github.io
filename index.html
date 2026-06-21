@@ -142,12 +142,12 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        /* === SLIDER FOTO === */
+        /* === SLIDER FOTO - HANYA KLIK TITIK === */
         .slider-wadah {
             width: 100%;
             max-width: 900px;
             height: 506px;
-            margin: 0 auto 10px auto;
+            margin: 0 auto 15px auto;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
@@ -190,38 +190,24 @@
             font-weight: bold;
         }
 
-        /* === TULISAN GESER === */
-        .info-geser {
-            text-align: center;
-            color: #0F766E;
-            font-size: 15px;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-        .info-geser span {
-            background-color: #a7f3d0;
-            padding: 4px 12px;
-            border-radius: 12px;
-        }
-
-        /* === SIMBOL TITIK / LINGKARAN === */
-        .simbol-geser {
+        /* === TITIK-TITIK PENGGESER === */
+        .titik-wadah {
             text-align: center;
             margin-bottom: 20px;
         }
         .titik {
             display: inline-block;
-            width: 12px;
-            height: 12px;
-            margin: 0 5px;
-            background-color: #a7f3d0;
+            width: 13px;
+            height: 13px;
+            margin: 0 6px;
+            background-color: #a7f3d0; /* Warna titik mati */
             border-radius: 50%;
             cursor: pointer;
             transition: 0.3s;
         }
         .titik.aktif {
-            background-color: #0F766E;
-            width: 25px;
+            background-color: #0F766E; /* Warna titik aktif */
+            width: 28px;
             border-radius: 10px;
         }
 
@@ -407,21 +393,16 @@
             </div>
         </div>
 
-        <!-- 3. TULISAN GESER -->
-        <div class="info-geser">
-            <span>Geser ></span>
+        <!-- 3. TITIK-TITIK PENGGESER -->
+        <div class="titik-wadah">
+            <span class="titik aktif" onclick="geserKe(0)"></span>
+            <span class="titik" onclick="geserKe(1)"></span>
+            <span class="titik" onclick="geserKe(2)"></span>
+            <span class="titik" onclick="geserKe(3)"></span>
+            <span class="titik" onclick="geserKe(4)"></span>
         </div>
 
-        <!-- 4. SIMBOL TITIK / LINGKARAN -->
-        <div class="simbol-geser">
-            <span class="titik aktif" onclick="pindahKe(0)"></span>
-            <span class="titik" onclick="pindahKe(1)"></span>
-            <span class="titik" onclick="pindahKe(2)"></span>
-            <span class="titik" onclick="pindahKe(3)"></span>
-            <span class="titik" onclick="pindahKe(4)"></span>
-        </div>
-
-        <!-- 5. ALAMAT -->
+        <!-- 4. ALAMAT -->
         <div class="alamat-bawah">
             Lembaga Pendidikan Islam | Pamuruyan<br>
             - Cibadak - Sukabumi
@@ -499,21 +480,18 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- SCRIPT PAKAI TITIK / SIMBOL -->
+    <!-- SCRIPT KHUSUS TITIK - PASTI BERFUNGSI -->
     <script>
-        let posisiAktif = 0;
-        const totalFoto = 5;
         const slider = document.getElementById('slider');
-        const daftarTitik = document.querySelectorAll('.titik');
+        const semuaTitik = document.querySelectorAll('.titik');
 
-        // Pindah ke nomor tertentu saat titik diklik
-        function pindahKe(nomor) {
-            posisiAktif = nomor;
-            // Geser slider
-            slider.style.transform = `translateX(-${posisiAktif * 100}%)`;
-            // Ubah warna titik aktif
-            daftarTitik.forEach((titik, indeks) => {
-                if(indeks === posisiAktif) {
+        function geserKe(nomor) {
+            // Geser gambar
+            slider.style.transform = `translateX(-${nomor * 100}%)`;
+
+            // Ubah warna titik yang aktif
+            semuaTitik.forEach((titik, indeks) => {
+                if(indeks === nomor) {
                     titik.classList.add('aktif');
                 } else {
                     titik.classList.remove('aktif');
