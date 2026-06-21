@@ -113,7 +113,7 @@
             box-shadow: 0 15px 35px rgba(15, 118, 110, 0.18);
         }
 
-        /* === BERANDA - SEMUA FOTO DISATUKAN DISINI === */
+        /* === BERANDA - POSISI SUDAH DIATUR === */
         #beranda {
             text-align: center;
             padding-top: 130px;
@@ -133,7 +133,7 @@
         #beranda h1 {
             font-size: clamp(2rem, 5vw, 3.8rem);
             color: #1E293B;
-            margin-bottom: 18px;
+            margin-bottom: 20px; /* Jarak bawah tulisan judul */
             line-height: 1.2;
         }
 
@@ -142,36 +142,49 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        .alamat-bawah {
-            font-size: 18px;
-            color: #64748B;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        /* Wadah Semua Foto */
-        .galeri-foto {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 900px;
-            margin: 30px auto;
-        }
-
-        .foto-item {
-            position: relative;
+        /* === SLIDER FOTO - LANGSUNG DI BAWAH H1 === */
+        .slider-wadah {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            margin: 0 auto 20px auto; /* Margin bawah dikurangi biar dekat ke alamat */
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        .foto-item img {
+        .slider-isi {
+            width: 300%;
+            height: 100%;
+            display: flex;
+            animation: geser 15s infinite;
+            transition: transform 0.5s ease;
+        }
+
+        @keyframes geser {
+            0% { transform: translateX(0); }
+            30% { transform: translateX(0); }
+            35% { transform: translateX(-33.33%); }
+            65% { transform: translateX(-33.33%); }
+            70% { transform: translateX(-66.66%); }
+            100% { transform: translateX(-66.66%); }
+        }
+
+        .slide {
+            width: 33.33%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
-            height: auto;
         }
 
-        /* Tulisan di dalam foto */
+        /* TULISAN DI DALAM FOTO */
         .teks-di-foto {
             position: absolute;
             bottom: 0;
@@ -181,8 +194,15 @@
             color: white;
             text-align: center;
             padding: 12px 0;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: bold;
+        }
+
+        .alamat-bawah {
+            font-size: 18px;
+            color: #64748B;
+            margin-bottom: 30px;
+            line-height: 1.5;
         }
 
         .btn-hijau {
@@ -322,36 +342,41 @@
         </div>
     </nav>
 
-    <!-- BERANDA - SEMUA FOTO DISATUKAN DISINI -->
+    <!-- BERANDA - SUSUNAN SUDAH SESUAI -->
     <section id="beranda">
         <div class="tag-selamat">✨ Selamat Datang di Lembaga Pendidikan Islam</div>
         
+        <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
+
+        <!-- 2. SLIDER FOTO - POSISINYA DI SINI, LANGSUNG DI BAWAH TULISAN -->
+        <div class="slider-wadah">
+            <div class="slider-isi">
+                <div class="slide">
+                    <img src="Gedung.png" alt="Gedung Lembaga">
+                    <div class="teks-di-foto">Gedung Lembaga Pendidikan Islam</div>
+                </div>
+                <div class="slide">
+                    <img src="pengurus.png" alt="Struktur Pengurus">
+                    <div class="teks-di-foto">Struktur Pengurus</div>
+                </div>
+                <div class="slide">
+                    <img src="kbm.png" alt="Kegiatan Belajar Mengajar">
+                    <div class="teks-di-foto">Kegiatan Belajar Mengajar</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. ALAMAT -->
         <div class="alamat-bawah">
             Lembaga Pendidikan Islam | Pamuruyan<br>
             - Cibadak - Sukabumi
         </div>
 
-        <!-- SEMUA FOTO DI SATUKAN DISINI -->
-        <div class="galeri-foto">
-            <div class="foto-item">
-                <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
-                <div class="teks-di-foto">Gedung Lembaga</div>
-            </div>
-            <div class="foto-item">
-                <img src="pengurus.png" alt="Pengurus Sirojul Qur'an">
-                <div class="teks-di-foto">Struktur Pengurus</div>
-            </div>
-            <div class="foto-item">
-                <img src="kbm.png" alt="Kegiatan Belajar Mengajar">
-                <div class="teks-di-foto">Kegiatan Belajar Mengajar</div>
-            </div>
-        </div>
-
         <a href="#tentang" class="btn-hijau">Pelajari Lebih Lanjut</a>
     </section>
 
-    <!-- TENTANG KAMI - ISI SAJA, TANPA FOTO -->
+    <!-- TENTANG KAMI - HANYA TULISAN -->
     <section id="tentang">
         <h2>Tentang Kami</h2>
         <div class="kotak-elegan">
