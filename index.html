@@ -142,19 +142,17 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        /* === SLIDER FOTO - DIPERBAIKI SENTUHNYA === */
+        /* === SLIDER FOTO === */
         .slider-wadah {
             width: 100%;
             max-width: 900px;
             height: 506px;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 10px auto;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             position: relative;
             background-color: #ECFDF5;
-            touch-action: none; /* PENTING: Ini kuncinya supaya geser sentuh berjalan */
-            user-select: none;
         }
 
         .slider-isi {
@@ -176,7 +174,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            pointer-events: none; /* Supaya gambar tidak menghalangi sentuhan */
         }
 
         /* TULISAN DI DALAM FOTO */
@@ -191,35 +188,41 @@
             padding: 12px 0;
             font-size: 18px;
             font-weight: bold;
-            pointer-events: none;
         }
 
-        /* TOMBOL GESER */
-        .tombol-geser {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
-            border: none;
-            font-size: 24px;
-            padding: 15px;
-            cursor: pointer;
-            z-index: 10;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* === TULISAN GESER === */
+        .info-geser {
+            text-align: center;
             color: #0F766E;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 8px;
         }
-        .tombol-kiri { left: 15px; }
-        .tombol-kanan { right: 15px; }
-        .tombol-geser:hover {
-            background: #ffffff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        .info-geser span {
+            background-color: #a7f3d0;
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        /* === SIMBOL TITIK / LINGKARAN === */
+        .simbol-geser {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .titik {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background-color: #a7f3d0;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .titik.aktif {
+            background-color: #0F766E;
+            width: 25px;
+            border-radius: 10px;
         }
 
         .alamat-bawah {
@@ -381,12 +384,8 @@
         <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
 
-        <!-- 2. SLIDER FOTO - SENTUH + TOMBOL -->
-        <div class="slider-wadah" id="wadahSlider">
-            <!-- Tombol Geser -->
-            <button class="tombol-geser tombol-kiri" onclick="geserKiri()">&#8249;</button>
-            <button class="tombol-geser tombol-kanan" onclick="geserKanan()">&#8250;</button>
-
+        <!-- 2. SLIDER FOTO -->
+        <div class="slider-wadah">
             <div class="slider-isi" id="slider">
                 <div class="slide">
                     <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
@@ -408,7 +407,21 @@
             </div>
         </div>
 
-        <!-- 3. ALAMAT -->
+        <!-- 3. TULISAN GESER -->
+        <div class="info-geser">
+            <span>Geser ></span>
+        </div>
+
+        <!-- 4. SIMBOL TITIK / LINGKARAN -->
+        <div class="simbol-geser">
+            <span class="titik aktif" onclick="pindahKe(0)"></span>
+            <span class="titik" onclick="pindahKe(1)"></span>
+            <span class="titik" onclick="pindahKe(2)"></span>
+            <span class="titik" onclick="pindahKe(3)"></span>
+            <span class="titik" onclick="pindahKe(4)"></span>
+        </div>
+
+        <!-- 5. ALAMAT -->
         <div class="alamat-bawah">
             Lembaga Pendidikan Islam | Pamuruyan<br>
             - Cibadak - Sukabumi
@@ -486,58 +499,27 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- SCRIPT DIPERBAIKI TOTAL SENTUHNYA -->
+    <!-- SCRIPT PAKAI TITIK / SIMBOL -->
     <script>
-        let posisi = 0;
+        let posisiAktif = 0;
         const totalFoto = 5;
         const slider = document.getElementById('slider');
+        const daftarTitik = document.querySelectorAll('.titik');
 
-        // Variabel Sentuh
-        let mulaiX = 0;
-        let batasGeser = 50; // Minimal geser 50px supaya pindah
-
-        // Fungsi Tombol
-        function geserKanan() {
-            if (posisi > -((totalFoto - 1) * 100)) {
-                posisi -= 100;
-                slider.style.transform = `translateX(${posisi}%)`;
-            } else {
-                posisi = 0;
-                slider.style.transform = `translateX(${posisi}%)`;
-            }
+        // Pindah ke nomor tertentu saat titik diklik
+        function pindahKe(nomor) {
+            posisiAktif = nomor;
+            // Geser slider
+            slider.style.transform = `translateX(-${posisiAktif * 100}%)`;
+            // Ubah warna titik aktif
+            daftarTitik.forEach((titik, indeks) => {
+                if(indeks === posisiAktif) {
+                    titik.classList.add('aktif');
+                } else {
+                    titik.classList.remove('aktif');
+                }
+            });
         }
-
-        function geserKiri() {
-            if (posisi < 0) {
-                posisi += 100;
-                slider.style.transform = `translateX(${posisi}%)`;
-            } else {
-                posisi = -((totalFoto - 1) * 100);
-                slider.style.transform = `translateX(${posisi}%)`;
-            }
-        }
-
-        // Fungsi Sentuh - DIPERBAIKI
-        const wadah = document.getElementById('wadahSlider');
-
-        wadah.addEventListener('touchstart', function(e) {
-            mulaiX = e.touches[0].clientX;
-        }, {passive: true});
-
-        wadah.addEventListener('touchend', function(e) {
-            let akhirX = e.changedTouches[0].clientX;
-            let selisih = mulaiX - akhirX;
-
-            // Geser ke Kiri (pindah ke foto berikutnya)
-            if (selisih > batasGeser) {
-                geserKanan();
-            }
-            // Geser ke Kanan (pindah ke foto sebelumnya)
-            if (selisih < -batasGeser) {
-                geserKiri();
-            }
-        }, {passive: true});
-
     </script>
 
 </body>
