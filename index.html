@@ -142,7 +142,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        /* === SLIDER FOTO - KHUSUS GESER SENTUH === */
+        /* === SLIDER FOTO - PENGATURAN SENTUH === */
         .slider-wadah {
             width: 100%;
             max-width: 900px;
@@ -153,7 +153,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             position: relative;
             background-color: #ECFDF5;
-            touch-action: pan-y; /* Izinkan geser kiri-kanan saja */
+            touch-action: none; /* Wajib: biar browser tidak mengganggu geseran */
         }
 
         .slider-isi {
@@ -175,7 +175,8 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            pointer-events: none; /* Agar gambar tidak menghalangi sentuhan */
+            pointer-events: none; /* Gambar tidak menghalangi sentuhan */
+            user-select: none;
         }
 
         /* TULISAN DI DALAM FOTO */
@@ -193,7 +194,7 @@
             pointer-events: none;
         }
 
-        /* === TITIK-TITIK PENANDA POSISI === */
+        /* === TITIK PENANDA POSISI === */
         .titik-wadah {
             text-align: center;
             margin-bottom: 20px;
@@ -372,8 +373,8 @@
         <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
 
-        <!-- 2. SLIDER FOTO - GESER PAKAI SENTUH -->
-        <div class="slider-wadah" id="areaSentuh">
+        <!-- 2. SLIDER FOTO - GESER SENTUH -->
+        <div class="slider-wadah" id="areaGeser">
             <div class="slider-isi" id="slider">
                 <div class="slide">
                     <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
@@ -482,47 +483,52 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- SCRIPT KHUSUS GESER SENTUH - DIJAMIN BERFUNGSI -->
+    <!-- SCRIPT SENTUH YANG SUDAH DIPERBAIKI & DIPASTIKAN BERFUNGSI -->
     <script>
         const slider = document.getElementById('slider');
-        const semuaTitik = document.querySelectorAll('.titik');
-        let posisiAktif = 0;
-        let posisiAwal = 0;
-        let posisiSaatIni = 0;
-        let selisihGeser = 0;
+        const daftarTitik = document.querySelectorAll('.titik');
+        let halamanSekarang = 0;
+        let titikAwalX = 0;
+        let titikSekarangX = 0;
+        let selisih = 0;
+        const TOTAL_GAMBAR = 5;
 
-        // Mulai sentuh
-        document.getElementById('areaSentuh').addEventListener('touchstart', function(e) {
-            posisiAwal = e.touches[0].clientX;
-        }, {passive: true});
+        // MULAI SENTUH
+        document.getElementById('areaGeser').addEventListener('touchstart', function(e) {
+            titikAwalX = e.touches[0].clientX;
+        }, { passive: true });
 
-        // Saat digeser
-        document.getElementById('areaSentuh').addEventListener('touchmove', function(e) {
-            posisiSaatIni = e.touches[0].clientX;
-            selisihGeser = posisiAwal - posisiSaatIni;
-        }, {passive: true});
+        // SAAT DIGESER
+        document.getElementById('areaGeser').addEventListener('touchmove', function(e) {
+            titikSekarangX = e.touches[0].clientX;
+            selisih = titikAwalX - titikSekarangX;
+        }, { passive: true });
 
-        // Lepas sentuhan
-        document.getElementById('areaSentuh').addEventListener('touchend', function() {
-            // Geser ke kanan
-            if (selisihGeser > 50 && posisiAktif < 4) {
-                posisiAktif++;
+        // LEPAS SENTUH
+        document.getElementById('areaGeser').addEventListener('touchend', function() {
+            
+            // GESER KE KANAN -> GAMBAR BERIKUTNYA
+            if (selisih > 40 && halamanSekarang < TOTAL_GAMBAR - 1) {
+                halamanSekarang++;
             }
-            // Geser ke kiri
-            if (selisihGeser < -50 && posisiAktif > 0) {
-                posisiAktif--;
+            // GESER KE KIRI -> GAMBAR SEBELUMNYA
+            else if (selisih < -40 && halamanSekarang > 0) {
+                halamanSekarang--;
             }
 
-            // Pindahkan gambar
-            slider.style.transform = `translateX(-${posisiAktif * 20}%)`;
+            // PASANG POSISI GAMBAR
+            slider.style.transform = 'translateX(-' + (halamanSekarang * 20) + '%)';
 
-            // Ubah titik aktif
-            semuaTitik.forEach((titik, idx) => {
-                titik.classList.remove('aktif');
-                if(idx === posisiAktif) titik.classList.add('aktif');
+            // UBAH TITIK AKTIF
+            daftarTitik.forEach((dot, indeks) => {
+                dot.classList.remove('aktif');
+                if(indeks === halamanSekarang) {
+                    dot.classList.add('aktif');
+                }
             });
 
-            selisihGeser = 0; // Reset
+            // RESET NILAI
+            selisih = 0;
         });
     </script>
 
