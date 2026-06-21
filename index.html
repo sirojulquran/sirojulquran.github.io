@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sirojul Qur'an</title>
+    <title>Lembaga Sirojul Qur'an</title>
     <style>
         * {
             margin: 0;
@@ -43,14 +43,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .nav-kiri img {
-            width: 42px;
-            height: 42px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            object-fit: cover;
         }
 
         .nav-kiri span {
@@ -137,15 +129,6 @@
             margin-bottom: 25px;
         }
 
-        #beranda img {
-            width: 100%;
-            max-width: 850px;
-            border-radius: 20px;
-            box-shadow: 0 12px 35px rgba(15, 118, 110, 0.15);
-            margin-bottom: 35px;
-            object-fit: cover;
-        }
-
         #beranda h1 {
             font-size: clamp(2rem, 5vw, 3.8rem);
             color: #1E293B;
@@ -194,50 +177,44 @@
             margin-bottom: 50px;
         }
 
-        .program-tengah {
-            max-width: 420px;
-            margin: 0 auto 40px;
-            text-align: center;
+        .program-utama {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .program-tengah img {
-            width: 100%;
-            border-radius: 16px;
+        .program-utama h3 {
+            color: #0F766E;
             margin-bottom: 20px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            object-fit: cover;
-        }
-
-        .program-tengah h3 {
-            color: #0F766E;
-            margin-bottom: 12px;
             font-size: 22px;
-        }
-
-        /* === GALERI FOTO DI BAWAH PROGRAM === */
-        .galeri-foto {
-            display: grid;
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .foto-item {
             text-align: center;
         }
 
-        .foto-item img {
-            width: 100%;
-            max-width: 750px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            object-fit: cover;
+        .program-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #a7f3d0;
         }
 
-        .foto-item p {
-            margin-top: 10px;
-            font-weight: 500;
+        .program-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .program-item h4 {
             color: #0F766E;
-            font-size: 16px;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .label-praktik {
+            font-weight: bold;
+            color: #065f46;
+        }
+
+        .label-keunggulan {
+            font-weight: bold;
+            color: #065f46;
         }
 
         /* === KONTAK === */
@@ -247,6 +224,16 @@
             gap: 12px;
             margin-bottom: 14px;
             font-size: 18px;
+        }
+
+        .item-kontak a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .item-kontak a:hover {
+            color: #0F766E;
+            text-decoration: underline;
         }
 
         .btn-instagram {
@@ -283,12 +270,11 @@
 </head>
 <body>
 
-    <!-- NAVIGASI - LOGO: logo sq.jpeg -->
+    <!-- NAVIGASI -->
     <nav>
         <div class="nav-container">
             <div class="nav-kiri">
-                <img src="logo sq.jpeg" alt="Logo Sirojul Qur'an">
-                <span>Sirojul Qur'an</span>
+                <span>Lembaga Sirojul Qur'an</span>
             </div>
             <div class="nav-kanan">
                 <a href="#beranda">Beranda</a>
@@ -299,11 +285,10 @@
         </div>
     </nav>
 
-    <!-- BERANDA - PENGURUS: pengurus.png -->
+    <!-- BERANDA -->
     <section id="beranda">
         <div class="tag-selamat">✨ Selamat Datang di Lembaga Pendidikan Islam</div>
-        <img src="pengurus.png" alt="Dewan guru & pengawas">
-        <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
+        <h1>Selamat Datang di <span>Lembaga Sirojul Qur'an</span></h1>
         <div class="alamat-bawah">
             Lembaga Pendidikan Islam | Pamuruyan<br>
             - Cibadak - Sukabumi
@@ -329,25 +314,29 @@
         </div>
     </section>
 
-    <!-- PROGRAM UNGGULAN - TETAP PAKAI kbm.png ✅ -->
+    <!-- PROGRAM UNGGULAN -->
     <section id="program">
-        <h2>Program Unggulan</h2>
-        <div class="kotak-elegan program-tengah">
-            <img src="kbm.png" alt="Kegiatan Belajar Mengajar">
-            <h3>MDT Sirojul Qur'an</h3>
-            <p style="color:#64748B;">Madrasah Diniyah Takmiliyah<br>Pendidikan dasar agama Islam untuk anak-anak & remaja agar berilmu dan berakhlak mulia.</p>
-        </div>
+        <h2>Program Unggulan MDT</h2>
+        <div class="kotak-elegan program-utama">
+            
+            <div class="program-item">
+                <h4>1. Tahfidz dan Tahsin Al-Qur'an</h4>
+                <p><span class="label-praktik">Praktik:</span> Hafalan surat-surat pendek, juz tertentu (seperti Juz 30), atau target hafalan tertentu. Dilengkapi dengan metode Tasmi' (memperdengarkan hafalan) dan perbaikan bacaan (Tahsin) dengan ilmu tajwid.</p>
+                <p><span class="label-keunggulan">Keunggulan:</span> Mencetak generasi yang mencintai dan menghafal Al-Qur'an sejak dini.</p>
+            </div>
 
-        <!-- ✅ DI BAWAHNYA: URUTAN GEDUNG → DEWAN GURU (TANPA MURID) ✅ -->
-        <div class="galeri-foto">
-            <div class="foto-item">
-                <img src="Gedung.png" alt="Gedung Lembaga Sirojul Qur'an">
-                <p>Gedung Lembaga</p>
+            <div class="program-item">
+                <h4>4. Pendidikan Akhlakul Karimah dan Karakter</h4>
+                <p><span class="label-praktik">Praktik:</span> Bimbingan penerapan adab sehari-hari (sopan santun kepada guru dan orang tua), pembiasaan sholat berjamaah, infaq, dan dzikir bersama.</p>
+                <p><span class="label-keunggulan">Keunggulan:</span> Menjamin seimbang antara kecerdasan intelektual dan spiritual serta budi pekerti yang luhur.</p>
             </div>
-            <div class="foto-item">
-                <img src="pengurus.png" alt="Dewan Guru & Pengawas">
-                <p>Dewan Guru & Pengawas</p>
+
+            <div class="program-item">
+                <h4>5. Praktik Ibadah dan Keterampilan Keagamaan</h4>
+                <p><span class="label-praktik">Praktik:</span> Bimbingan intensif tata cara bersuci (Thaharah), sholat jenazah, praktik manasik haji, serta public speaking seperti bimbingan menjadi Da'i cilik (pildacil) dan pembacaan doa/tahlil.</p>
+                <p><span class="label-keunggulan">Keunggulan:</span> Mempersiapkan siswa agar siap dan percaya diri dalam bermasyarakat serta berpartisipasi aktif dalam kegiatan keagamaan di lingkungan lokal.</p>
             </div>
+
         </div>
     </section>
 
@@ -357,8 +346,9 @@
         <div class="kotak-elegan">
             <div class="item-kontak">
                 <span>📍</span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Kp.+Ongkrak,+Desa+Pamuruyan,+Kec.+Cibadak,+Kab.+Sukabumi+-+Jawa+Barat" target="_blank" style="text-decoration:none; color:inherit;">
-                Kp. Ongkrak, Desa Pamuruyan, Kec. Cibadak, Kab. Sukabumi - Jawa Barat</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Pamuruyan,+Cibadak,+Sukabumi,+Jawa+Barat" target="_blank">
+                    Pamuruyan - Cibadak - Sukabumi
+                </a>
             </div>
             <div class="item-kontak">
                 <span>📞</span>
@@ -376,7 +366,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
+        <p>© 2026 Lembaga Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
 </body>
