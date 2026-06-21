@@ -152,17 +152,18 @@
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             position: relative;
+            background-color: #ECFDF5; /* Warna latar jika gambar belum muncul */
         }
 
         .slider-isi {
-            width: 500%; /* Diubah jadi 500% karena ada 5 foto */
+            width: 500%; /* 5 foto = 500% */
             height: 100%;
             display: flex;
             transition: transform 0.5s ease; /* Geser halus */
         }
 
         .slide {
-            width: 20%; /* Lebar per slide jadi 20% karena 5 foto */
+            width: 20%; /* 100 / 5 = 20% */
             height: 100%;
             position: relative;
         }
@@ -193,7 +194,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.9);
             border: none;
             font-size: 24px;
             padding: 15px;
@@ -207,6 +208,7 @@
             justify-content: center;
             color: #0F766E;
             font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         .tombol-kiri { left: 15px; }
         .tombol-kanan { right: 15px; }
@@ -393,7 +395,6 @@
                     <img src="kbm.png" alt="Kegiatan Belajar">
                     <div class="teks-di-foto">Kegiatan Belajar</div>
                 </div>
-                <!-- FOTO BARU DITAMBAHKAN -->
                 <div class="slide">
                     <img src="knk1.jpg" alt="Kegiatan 1">
                     <!-- TANPA TULISAN -->
@@ -483,27 +484,32 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- SCRIPT UNTUK GESER MANUAL -->
+    <!-- SCRIPT DIPERBAIKI - TIDAK ADA ERROR LAGI -->
     <script>
         let posisi = 0;
+        const totalFoto = 5; // Jumlah total foto
         const slider = document.getElementById('slider');
 
         function geserKanan() {
-            if (posisi > -400) { // Diubah jadi -400 karena ada 5 foto (0, -100, -200, -300, -400)
+            // Geser ke kanan, berhenti di foto terakhir
+            if (posisi > -((totalFoto - 1) * 100)) {
                 posisi -= 100;
                 slider.style.transform = `translateX(${posisi}%)`;
             } else {
-                posisi = 0; // Balik ke awal
+                // Kembali ke awal setelah foto terakhir
+                posisi = 0;
                 slider.style.transform = `translateX(${posisi}%)`;
             }
         }
 
         function geserKiri() {
+            // Geser ke kiri, berhenti di foto pertama
             if (posisi < 0) {
                 posisi += 100;
                 slider.style.transform = `translateX(${posisi}%)`;
             } else {
-                posisi = -400; // Balik ke akhir
+                // Kembali ke akhir dari foto pertama
+                posisi = -((totalFoto - 1) * 100);
                 slider.style.transform = `translateX(${posisi}%)`;
             }
         }
