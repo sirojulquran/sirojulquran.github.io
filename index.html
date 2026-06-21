@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Sirojul Qur'an</title>
     <style>
         * {
@@ -142,7 +142,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        /* === SLIDER FOTO SENTUH + TOMBOL - UKURAN YOUTUBE (16:9) === */
+        /* === SLIDER FOTO - DIPERBAIKI SENTUHNYA === */
         .slider-wadah {
             width: 100%;
             max-width: 900px;
@@ -153,20 +153,22 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             position: relative;
             background-color: #ECFDF5;
-            touch-action: pan-y; /* Biar cuma geser kiri-kanan, atas-bawah tetap normal */
+            touch-action: none; /* PENTING: Ini kuncinya supaya geser sentuh berjalan */
+            user-select: none;
         }
 
         .slider-isi {
-            width: 500%; /* 5 foto = 500% */
+            width: 500%; /* 5 Foto */
             height: 100%;
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
         }
 
         .slide {
             width: 20%; /* 100 / 5 = 20% */
             height: 100%;
             position: relative;
+            flex-shrink: 0;
         }
 
         .slide img {
@@ -174,9 +176,10 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            pointer-events: none; /* Supaya gambar tidak menghalangi sentuhan */
         }
 
-        /* TULISAN DI DALAM FOTO - SESUAI PERMINTAAN */
+        /* TULISAN DI DALAM FOTO */
         .teks-di-foto {
             position: absolute;
             bottom: 0;
@@ -188,6 +191,7 @@
             padding: 12px 0;
             font-size: 18px;
             font-weight: bold;
+            pointer-events: none;
         }
 
         /* TOMBOL GESER */
@@ -377,7 +381,7 @@
         <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
 
-        <!-- 2. SLIDER FOTO SENTUH + TOMBOL - UKURAN 16:9 SEPERTI YOUTUBE -->
+        <!-- 2. SLIDER FOTO - SENTUH + TOMBOL -->
         <div class="slider-wadah" id="wadahSlider">
             <!-- Tombol Geser -->
             <button class="tombol-geser tombol-kiri" onclick="geserKiri()">&#8249;</button>
@@ -390,7 +394,6 @@
                 </div>
                 <div class="slide">
                     <img src="pengurus.png" alt="Pengurus">
-                    <!-- TIDAK ADA TULISAN DI SINI -->
                 </div>
                 <div class="slide">
                     <img src="kbm.png" alt="Kegiatan Belajar">
@@ -398,11 +401,9 @@
                 </div>
                 <div class="slide">
                     <img src="knk1.jpg" alt="Kegiatan 1">
-                    <!-- TANPA TULISAN -->
                 </div>
                 <div class="slide">
                     <img src="knk2.jpg" alt="Kegiatan 2">
-                    <!-- TANPA TULISAN -->
                 </div>
             </div>
         </div>
@@ -485,14 +486,15 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- SCRIPT GESER SENTUH + TOMBOL -->
+    <!-- SCRIPT DIPERBAIKI TOTAL SENTUHNYA -->
     <script>
         let posisi = 0;
         const totalFoto = 5;
         const slider = document.getElementById('slider');
 
-        // Variabel untuk sentuhan
-        let mulaiX, akhirX;
+        // Variabel Sentuh
+        let mulaiX = 0;
+        let batasGeser = 50; // Minimal geser 50px supaya pindah
 
         // Fungsi Tombol
         function geserKanan() {
@@ -515,29 +517,27 @@
             }
         }
 
-        // Fungsi Geser Sentuh
+        // Fungsi Sentuh - DIPERBAIKI
         const wadah = document.getElementById('wadahSlider');
 
         wadah.addEventListener('touchstart', function(e) {
             mulaiX = e.touches[0].clientX;
-        }, false);
+        }, {passive: true});
 
         wadah.addEventListener('touchend', function(e) {
-            akhirX = e.changedTouches[0].clientX;
-            hitungGeser();
-        }, false);
+            let akhirX = e.changedTouches[0].clientX;
+            let selisih = mulaiX - akhirX;
 
-        function hitungGeser() {
-            const jarakGeser = mulaiX - akhirX;
-            // Kalau geser ke kiri (jarak positif)
-            if (jarakGeser > 50) {
+            // Geser ke Kiri (pindah ke foto berikutnya)
+            if (selisih > batasGeser) {
                 geserKanan();
             }
-            // Kalau geser ke kanan (jarak negatif)
-            if (jarakGeser < -50) {
+            // Geser ke Kanan (pindah ke foto sebelumnya)
+            if (selisih < -batasGeser) {
                 geserKiri();
             }
-        }
+        }, {passive: true});
+
     </script>
 
 </body>
