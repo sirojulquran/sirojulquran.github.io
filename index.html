@@ -142,7 +142,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        /* === SLIDER FOTO - HANYA KLIK TITIK === */
+        /* === SLIDER FOTO - KHUSUS GESER SENTUH === */
         .slider-wadah {
             width: 100%;
             max-width: 900px;
@@ -153,6 +153,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             position: relative;
             background-color: #ECFDF5;
+            touch-action: pan-y; /* Izinkan geser kiri-kanan saja */
         }
 
         .slider-isi {
@@ -174,6 +175,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            pointer-events: none; /* Agar gambar tidak menghalangi sentuhan */
         }
 
         /* TULISAN DI DALAM FOTO */
@@ -188,9 +190,10 @@
             padding: 12px 0;
             font-size: 18px;
             font-weight: bold;
+            pointer-events: none;
         }
 
-        /* === TITIK-TITIK PENGGESER === */
+        /* === TITIK-TITIK PENANDA POSISI === */
         .titik-wadah {
             text-align: center;
             margin-bottom: 20px;
@@ -200,13 +203,12 @@
             width: 13px;
             height: 13px;
             margin: 0 6px;
-            background-color: #a7f3d0; /* Warna titik mati */
+            background-color: #a7f3d0;
             border-radius: 50%;
-            cursor: pointer;
             transition: 0.3s;
         }
         .titik.aktif {
-            background-color: #0F766E; /* Warna titik aktif */
+            background-color: #0F766E;
             width: 28px;
             border-radius: 10px;
         }
@@ -370,8 +372,8 @@
         <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
 
-        <!-- 2. SLIDER FOTO -->
-        <div class="slider-wadah">
+        <!-- 2. SLIDER FOTO - GESER PAKAI SENTUH -->
+        <div class="slider-wadah" id="areaSentuh">
             <div class="slider-isi" id="slider">
                 <div class="slide">
                     <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
@@ -393,13 +395,13 @@
             </div>
         </div>
 
-        <!-- 3. TITIK-TITIK PENGGESER -->
+        <!-- 3. TITIK PENANDA -->
         <div class="titik-wadah">
-            <span class="titik aktif" onclick="geserKe(0)"></span>
-            <span class="titik" onclick="geserKe(1)"></span>
-            <span class="titik" onclick="geserKe(2)"></span>
-            <span class="titik" onclick="geserKe(3)"></span>
-            <span class="titik" onclick="geserKe(4)"></span>
+            <span class="titik aktif"></span>
+            <span class="titik"></span>
+            <span class="titik"></span>
+            <span class="titik"></span>
+            <span class="titik"></span>
         </div>
 
         <!-- 4. ALAMAT -->
@@ -480,24 +482,48 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- SCRIPT KHUSUS TITIK - PASTI BERFUNGSI -->
+    <!-- SCRIPT KHUSUS GESER SENTUH - DIJAMIN BERFUNGSI -->
     <script>
         const slider = document.getElementById('slider');
         const semuaTitik = document.querySelectorAll('.titik');
+        let posisiAktif = 0;
+        let posisiAwal = 0;
+        let posisiSaatIni = 0;
+        let selisihGeser = 0;
 
-        function geserKe(nomor) {
-            // Geser gambar
-            slider.style.transform = `translateX(-${nomor * 100}%)`;
+        // Mulai sentuh
+        document.getElementById('areaSentuh').addEventListener('touchstart', function(e) {
+            posisiAwal = e.touches[0].clientX;
+        }, {passive: true});
 
-            // Ubah warna titik yang aktif
-            semuaTitik.forEach((titik, indeks) => {
-                if(indeks === nomor) {
-                    titik.classList.add('aktif');
-                } else {
-                    titik.classList.remove('aktif');
-                }
+        // Saat digeser
+        document.getElementById('areaSentuh').addEventListener('touchmove', function(e) {
+            posisiSaatIni = e.touches[0].clientX;
+            selisihGeser = posisiAwal - posisiSaatIni;
+        }, {passive: true});
+
+        // Lepas sentuhan
+        document.getElementById('areaSentuh').addEventListener('touchend', function() {
+            // Geser ke kanan
+            if (selisihGeser > 50 && posisiAktif < 4) {
+                posisiAktif++;
+            }
+            // Geser ke kiri
+            if (selisihGeser < -50 && posisiAktif > 0) {
+                posisiAktif--;
+            }
+
+            // Pindahkan gambar
+            slider.style.transform = `translateX(-${posisiAktif * 20}%)`;
+
+            // Ubah titik aktif
+            semuaTitik.forEach((titik, idx) => {
+                titik.classList.remove('aktif');
+                if(idx === posisiAktif) titik.classList.add('aktif');
             });
-        }
+
+            selisihGeser = 0; // Reset
+        });
     </script>
 
 </body>
