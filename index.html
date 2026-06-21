@@ -142,7 +142,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        /* === SLIDER FOTO MANUAL - UKURAN YOUTUBE (16:9) === */
+        /* === SLIDER FOTO SENTUH + TOMBOL - UKURAN YOUTUBE (16:9) === */
         .slider-wadah {
             width: 100%;
             max-width: 900px;
@@ -152,14 +152,15 @@
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             position: relative;
-            background-color: #ECFDF5; /* Warna latar jika gambar belum muncul */
+            background-color: #ECFDF5;
+            touch-action: pan-y; /* Biar cuma geser kiri-kanan, atas-bawah tetap normal */
         }
 
         .slider-isi {
             width: 500%; /* 5 foto = 500% */
             height: 100%;
             display: flex;
-            transition: transform 0.5s ease; /* Geser halus */
+            transition: transform 0.5s ease;
         }
 
         .slide {
@@ -189,7 +190,7 @@
             font-weight: bold;
         }
 
-        /* TOMBOL GESER MANUAL */
+        /* TOMBOL GESER */
         .tombol-geser {
             position: absolute;
             top: 50%;
@@ -376,8 +377,8 @@
         <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
 
-        <!-- 2. SLIDER FOTO MANUAL - UKURAN 16:9 SEPERTI YOUTUBE -->
-        <div class="slider-wadah">
+        <!-- 2. SLIDER FOTO SENTUH + TOMBOL - UKURAN 16:9 SEPERTI YOUTUBE -->
+        <div class="slider-wadah" id="wadahSlider">
             <!-- Tombol Geser -->
             <button class="tombol-geser tombol-kiri" onclick="geserKiri()">&#8249;</button>
             <button class="tombol-geser tombol-kanan" onclick="geserKanan()">&#8250;</button>
@@ -484,33 +485,57 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- SCRIPT DIPERBAIKI - TIDAK ADA ERROR LAGI -->
+    <!-- SCRIPT GESER SENTUH + TOMBOL -->
     <script>
         let posisi = 0;
-        const totalFoto = 5; // Jumlah total foto
+        const totalFoto = 5;
         const slider = document.getElementById('slider');
 
+        // Variabel untuk sentuhan
+        let mulaiX, akhirX;
+
+        // Fungsi Tombol
         function geserKanan() {
-            // Geser ke kanan, berhenti di foto terakhir
             if (posisi > -((totalFoto - 1) * 100)) {
                 posisi -= 100;
                 slider.style.transform = `translateX(${posisi}%)`;
             } else {
-                // Kembali ke awal setelah foto terakhir
                 posisi = 0;
                 slider.style.transform = `translateX(${posisi}%)`;
             }
         }
 
         function geserKiri() {
-            // Geser ke kiri, berhenti di foto pertama
             if (posisi < 0) {
                 posisi += 100;
                 slider.style.transform = `translateX(${posisi}%)`;
             } else {
-                // Kembali ke akhir dari foto pertama
                 posisi = -((totalFoto - 1) * 100);
                 slider.style.transform = `translateX(${posisi}%)`;
+            }
+        }
+
+        // Fungsi Geser Sentuh
+        const wadah = document.getElementById('wadahSlider');
+
+        wadah.addEventListener('touchstart', function(e) {
+            mulaiX = e.touches[0].clientX;
+        }, false);
+
+        wadah.addEventListener('touchend', function(e) {
+            akhirX = e.changedTouches[0].clientX;
+            hitungGeser();
+        }, false);
+
+        function hitungGeser() {
+            const jarakGeser = mulaiX - akhirX;
+            // Kalau geser ke kiri (jarak positif)
+            if (jarakGeser > 50) {
+                geserKanan();
+            }
+            // Kalau geser ke kanan (jarak negatif)
+            if (jarakGeser < -50) {
+                geserKiri();
             }
         }
     </script>
