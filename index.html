@@ -142,7 +142,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        /* === SLIDER FOTO - UKURAN YOUTUBE (16:9) === */
+        /* === SLIDER FOTO MANUAL - UKURAN YOUTUBE (16:9) === */
         .slider-wadah {
             width: 100%;
             max-width: 900px;
@@ -155,24 +155,14 @@
         }
 
         .slider-isi {
-            width: 300%;
+            width: 500%; /* Diubah jadi 500% karena ada 5 foto */
             height: 100%;
             display: flex;
-            animation: geser 15s infinite;
-            transition: transform 0.5s ease;
-        }
-
-        @keyframes geser {
-            0% { transform: translateX(0); }
-            30% { transform: translateX(0); }
-            35% { transform: translateX(-33.33%); }
-            65% { transform: translateX(-33.33%); }
-            70% { transform: translateX(-66.66%); }
-            100% { transform: translateX(-66.66%); }
+            transition: transform 0.5s ease; /* Geser halus */
         }
 
         .slide {
-            width: 33.33%;
+            width: 20%; /* Lebar per slide jadi 20% karena 5 foto */
             height: 100%;
             position: relative;
         }
@@ -196,6 +186,33 @@
             padding: 12px 0;
             font-size: 18px;
             font-weight: bold;
+        }
+
+        /* TOMBOL GESER MANUAL */
+        .tombol-geser {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border: none;
+            font-size: 24px;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0F766E;
+            font-weight: bold;
+        }
+        .tombol-kiri { left: 15px; }
+        .tombol-kanan { right: 15px; }
+        .tombol-geser:hover {
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
 
         .alamat-bawah {
@@ -357,9 +374,13 @@
         <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
 
-        <!-- 2. SLIDER FOTO - UKURAN 16:9 SEPERTI YOUTUBE -->
+        <!-- 2. SLIDER FOTO MANUAL - UKURAN 16:9 SEPERTI YOUTUBE -->
         <div class="slider-wadah">
-            <div class="slider-isi">
+            <!-- Tombol Geser -->
+            <button class="tombol-geser tombol-kiri" onclick="geserKiri()">&#8249;</button>
+            <button class="tombol-geser tombol-kanan" onclick="geserKanan()">&#8250;</button>
+
+            <div class="slider-isi" id="slider">
                 <div class="slide">
                     <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
                     <div class="teks-di-foto">Gedung Sirojul Qur'an</div>
@@ -371,6 +392,15 @@
                 <div class="slide">
                     <img src="kbm.png" alt="Kegiatan Belajar">
                     <div class="teks-di-foto">Kegiatan Belajar</div>
+                </div>
+                <!-- FOTO BARU DITAMBAHKAN -->
+                <div class="slide">
+                    <img src="knk1.jpg" alt="Kegiatan 1">
+                    <!-- TANPA TULISAN -->
+                </div>
+                <div class="slide">
+                    <img src="knk2.jpg" alt="Kegiatan 2">
+                    <!-- TANPA TULISAN -->
                 </div>
             </div>
         </div>
@@ -452,6 +482,32 @@
     <footer>
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
+
+    <!-- SCRIPT UNTUK GESER MANUAL -->
+    <script>
+        let posisi = 0;
+        const slider = document.getElementById('slider');
+
+        function geserKanan() {
+            if (posisi > -400) { // Diubah jadi -400 karena ada 5 foto (0, -100, -200, -300, -400)
+                posisi -= 100;
+                slider.style.transform = `translateX(${posisi}%)`;
+            } else {
+                posisi = 0; // Balik ke awal
+                slider.style.transform = `translateX(${posisi}%)`;
+            }
+        }
+
+        function geserKiri() {
+            if (posisi < 0) {
+                posisi += 100;
+                slider.style.transform = `translateX(${posisi}%)`;
+            } else {
+                posisi = -400; // Balik ke akhir
+                slider.style.transform = `translateX(${posisi}%)`;
+            }
+        }
+    </script>
 
 </body>
 </html>
