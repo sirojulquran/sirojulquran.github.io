@@ -113,7 +113,7 @@
             box-shadow: 0 15px 35px rgba(15, 118, 110, 0.18);
         }
 
-        /* === BERANDA - POSISI SUDAH DIATUR === */
+        /* === BERANDA === */
         #beranda {
             text-align: center;
             padding-top: 130px;
@@ -133,7 +133,7 @@
         #beranda h1 {
             font-size: clamp(2rem, 5vw, 3.8rem);
             color: #1E293B;
-            margin-bottom: 20px; /* Jarak bawah tulisan judul */
+            margin-bottom: 20px;
             line-height: 1.2;
         }
 
@@ -142,12 +142,12 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        /* === SLIDER FOTO - LANGSUNG DI BAWAH H1 === */
+        /* === SLIDER FOTO - UKURAN YOUTUBE (16:9) === */
         .slider-wadah {
             width: 100%;
-            max-width: 800px;
-            height: 450px;
-            margin: 0 auto 20px auto; /* Margin bawah dikurangi biar dekat ke alamat */
+            max-width: 900px;
+            height: 506px;
+            margin: 0 auto 20px auto;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
@@ -184,7 +184,7 @@
             display: block;
         }
 
-        /* TULISAN DI DALAM FOTO */
+        /* TULISAN DI DALAM FOTO - SESUAI PERMINTAAN */
         .teks-di-foto {
             position: absolute;
             bottom: 0;
@@ -324,6 +324,14 @@
             border-top-right-radius: 35px;
             box-shadow: 0 -4px 15px rgba(15, 118, 110, 0.2);
         }
+
+        /* RESPONSIVE DI HP - Tetap rasio 16:9 */
+        @media (max-width: 768px) {
+            .slider-wadah {
+                height: calc(100vw * 9 / 16);
+                max-height: 400px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -349,20 +357,20 @@
         <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
 
-        <!-- 2. SLIDER FOTO - POSISINYA DI SINI, LANGSUNG DI BAWAH TULISAN -->
+        <!-- 2. SLIDER FOTO - UKURAN 16:9 SEPERTI YOUTUBE -->
         <div class="slider-wadah">
             <div class="slider-isi">
                 <div class="slide">
-                    <img src="Gedung.png" alt="Gedung Lembaga">
-                    <div class="teks-di-foto">Gedung Lembaga Pendidikan Islam</div>
+                    <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
+                    <div class="teks-di-foto">Gedung Sirojul Qur'an</div>
                 </div>
                 <div class="slide">
-                    <img src="pengurus.png" alt="Struktur Pengurus">
-                    <div class="teks-di-foto">Struktur Pengurus</div>
+                    <img src="pengurus.png" alt="Pengurus">
+                    <!-- TIDAK ADA TULISAN DI SINI -->
                 </div>
                 <div class="slide">
-                    <img src="kbm.png" alt="Kegiatan Belajar Mengajar">
-                    <div class="teks-di-foto">Kegiatan Belajar Mengajar</div>
+                    <img src="kbm.png" alt="Kegiatan Belajar">
+                    <div class="teks-di-foto">Kegiatan Belajar</div>
                 </div>
             </div>
         </div>
