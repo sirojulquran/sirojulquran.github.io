@@ -54,13 +54,14 @@
 
         .nav-kanan {
             display: flex;
-            gap: 25px;
+            gap: 35px;
         }
 
         .nav-kanan a {
             text-decoration: none;
             color: #1E293B;
             font-weight: 500;
+            font-size: 18px;
             transition: 0.3s;
         }
 
@@ -124,7 +125,7 @@
             color: #0F766E;
             padding: 8px 20px;
             border-radius: 25px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 500;
             margin-bottom: 25px;
         }
@@ -144,8 +145,17 @@
         .alamat-bawah {
             font-size: 18px;
             color: #64748B;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             line-height: 1.5;
+        }
+
+        .foto-tampilan {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            display: block;
         }
 
         .btn-hijau {
@@ -156,7 +166,8 @@
             border-radius: 14px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 20px;
+            font-size: 18px;
+            margin-top: 10px;
             box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);
             transition: 0.3s;
         }
@@ -270,11 +281,11 @@
 </head>
 <body>
 
-    <!-- NAVIGASI - SUDAH DIHAPUS MENU KONTAKNYA -->
+    <!-- NAVIGASI - LOGO SAJA, TANPA TULISAN DI SAMPINGNYA -->
     <nav>
         <div class="nav-container">
             <div class="nav-kiri">
-                <img src="logo yayasan.png" alt="Logo Sirojul Qur'an">
+                <img src="logo sq.jpeg" alt="Logo Sirojul Qur'an">
             </div>
             <div class="nav-kanan">
                 <a href="#beranda">Beranda</a>
@@ -287,6 +298,9 @@
     <!-- BERANDA -->
     <section id="beranda">
         <div class="tag-selamat">✨ Selamat Datang di Lembaga Pendidikan Islam</div>
+        
+        <img src="gambar.jpg" alt="Dewan Guru & Pengawas Sirojul Qur'an" class="foto-tampilan">
+        
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
         <div class="alamat-bawah">
             Lembaga Pendidikan Islam | Pamuruyan<br>
