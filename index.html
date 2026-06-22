@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Arial', sans-serif';
             scroll-behavior: smooth;
         }
 
@@ -119,40 +119,35 @@
             padding-top: 130px;
         }
 
-        /* ✅ BAGIAN ANIMASI TEKS (DIUBAH JADI 3 DETIK) ✅ */
+        /* ✅ BAGIAN ANIMASI TEKS - SUDAH DIPERBAIKI AGAR MUNCUL ✅ */
         .animasi-teks {
-            background-color: rgba(15, 118, 110, 0.1);
-            color: #0F766E;
-            padding: 10px 25px;
+            background-color: rgba(15, 118, 110, 0.1); /* Warna hijau muda persis contoh */
+            color: #0F766E; /* Tulisan hijau tua */
+            padding: 12px 25px;
             border-radius: 25px;
             font-size: 17px;
             font-weight: 500;
             margin: 0 auto 25px auto;
             max-width: 500px;
-            height: 42px;
+            min-height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
         }
 
         .animasi-teks span {
             display: inline-block;
-            animation: gantiTeks 6s infinite; /* Total siklus 6 detik, ganti tiap 3 detik */
+            animation: gantiTeks 6s infinite; /* Total 6 detik, ganti tiap 3 detik */
         }
 
         @keyframes gantiTeks {
-            0%, 45% {
-                transform: translateY(0);
-                content: "Yayasan Sirojul Qur'an Hikmaniyah";
-            }
-            50%, 95% {
-                transform: translateY(-100%);
-                content: "MDTU Sirojul Qur'an";
-            }
-            100% {
-                transform: translateY(0);
-            }
+            0% { transform: translateY(0); content: "✨ Yayasan Sirojul Qur'an Hikmaniyah"; }
+            45% { transform: translateY(0); content: "✨ Yayasan Sirojul Qur'an Hikmaniyah"; }
+            50% { transform: translateY(-100%); content: "✨ MDTU Sirojul Qur'an"; }
+            95% { transform: translateY(-100%); content: "✨ MDTU Sirojul Qur'an"; }
+            100% { transform: translateY(0); content: "✨ Yayasan Sirojul Qur'an Hikmaniyah"; }
         }
 
         #beranda h1 {
@@ -381,8 +376,8 @@
                 max-height: 400px;
             }
             .animasi-teks {
-                font-size: 15px;
-                padding: 8px 15px;
+                font-size: 14px;
+                padding: 10px 15px;
             }
         }
     </style>
@@ -403,10 +398,10 @@
         </div>
     </nav>
 
-    <!-- BERANDA - ANIMASI DI TEMPAT TANDA PANAH -->
+    <!-- BERANDA - ANIMASI DI TEMPAT TANDA PANAH ✅ SUDAH ADA ISINYA ✅ -->
     <section id="beranda">
 
-        <!-- ✅ ANIMASI TEKS SUDAH DIUBAH: GANTI TIAP 3 DETIK ✅ -->
+        <!-- ✅ TULISAN ANIMASI MUNCUL DI SINI ✅ -->
         <div class="animasi-teks">
             <span></span>
         </div>
@@ -420,7 +415,6 @@
         <!-- 3. SLIDER FOTO - FOTO BARU DIPALING ATAS, TANPA JUDUL -->
         <div class="slider-wadah" id="areaGeser">
             <div class="slider-isi" id="slider">
-                <!-- ✅ FOTO BARU: NAMA SESUAI YANG KAMU BUAT -->
                 <div class="slide">
                     <img src="acara-kenaikan-kelas-2026.jpg" alt="Acara Kenaikan Kelas MDTU Sirojul Qur'an th.2026">
                 </div>
@@ -444,7 +438,7 @@
             </div>
         </div>
 
-        <!-- 4. TITIK PENANDA - SUDAH 6 BUAH -->
+        <!-- 4. TITIK PENANDA -->
         <div class="titik-wadah">
             <span class="titik aktif"></span>
             <span class="titik"></span>
@@ -463,7 +457,7 @@
         <a href="#tentang" class="btn-hijau">Pelajari Lebih Lanjut</a>
     </section>
 
-    <!-- TENTANG KAMI - HANYA TULISAN -->
+    <!-- TENTANG KAMI -->
     <section id="tentang">
         <h2>Tentang Kami</h2>
         <div class="kotak-elegan">
@@ -532,7 +526,7 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- SCRIPT SENTUH - SUDAH DISESUAIKAN JUMLAH FOTO JADI 6 -->
+    <!-- SCRIPT SENTUH -->
     <script>
         const slider = document.getElementById('slider');
         const daftarTitik = document.querySelectorAll('.titik');
@@ -542,41 +536,26 @@
         let selisih = 0;
         const TOTAL_GAMBAR = 6;
 
-        // MULAI SENTUH
         document.getElementById('areaGeser').addEventListener('touchstart', function(e) {
             titikAwalX = e.touches[0].clientX;
         }, { passive: true });
 
-        // SAAT DIGESER
         document.getElementById('areaGeser').addEventListener('touchmove', function(e) {
             titikSekarangX = e.touches[0].clientX;
             selisih = titikAwalX - titikSekarangX;
         }, { passive: true });
 
-        // LEPAS SENTUH
         document.getElementById('areaGeser').addEventListener('touchend', function() {
-            
-            // GESER KE KANAN -> GAMBAR BERIKUTNYA
             if (selisih > 40 && halamanSekarang < TOTAL_GAMBAR - 1) {
                 halamanSekarang++;
-            }
-            // GESER KE KIRI -> GAMBAR SEBELUMNYA
-            else if (selisih < -40 && halamanSekarang > 0) {
+            } else if (selisih < -40 && halamanSekarang > 0) {
                 halamanSekarang--;
             }
-
-            // PASANG POSISI GAMBAR
             slider.style.transform = 'translateX(-' + (halamanSekarang * 16.66) + '%)';
-
-            // UBAH TITIK AKTIF
             daftarTitik.forEach((dot, indeks) => {
                 dot.classList.remove('aktif');
-                if(indeks === halamanSekarang) {
-                    dot.classList.add('aktif');
-                }
+                if(indeks === halamanSekarang) dot.classList.add('aktif');
             });
-
-            // RESET NILAI
             selisih = 0;
         });
     </script>
