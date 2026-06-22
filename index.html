@@ -73,8 +73,7 @@
         /* === BAGIAN UMUM === */
         section {
             padding: 100px 20px 70px;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1200px; margin: 0 auto;
         }
 
         h2 {
@@ -161,18 +160,18 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             position: relative;
             background-color: #ECFDF5;
-            touch-action: none; /* Wajib: biar browser tidak mengganggu geseran */
+            touch-action: none;
         }
 
         .slider-isi {
-            width: 500%; /* 5 Foto */
+            width: 600%; /* Jadi 6 Foto */
             height: 100%;
             display: flex;
             transition: transform 0.4s ease;
         }
 
         .slide {
-            width: 20%; /* 100 / 5 = 20% */
+            width: 16.66%; /* 100 / 6 = 16.66% */
             height: 100%;
             position: relative;
             flex-shrink: 0;
@@ -183,11 +182,11 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            pointer-events: none; /* Gambar tidak menghalangi sentuhan */
+            pointer-events: none;
             user-select: none;
         }
 
-        /* TULISAN DI DALAM FOTO - HANYA UNTUK KBM DAN GEDUNG */
+        /* TULISAN DI DALAM FOTO - SESUAI PERMINTAAN */
         .teks-di-foto {
             position: absolute;
             bottom: 0;
@@ -384,17 +383,21 @@
         <!-- 2. JUDUL "ACARA KEGIATAN" DI ATAS SLIDER -->
         <div class="judul-slider">Acara Kegiatan</div>
 
-        <!-- 3. SLIDER FOTO - URUTAN: KNK1 PALING BARU -->
+        <!-- 3. SLIDER FOTO - NAMA FILE SUDAH DISESUAIKAN -->
         <div class="slider-wadah" id="areaGeser">
             <div class="slider-isi" id="slider">
-                <!-- ✅ URUTAN BENAR: KNK1 DI ATAS/PALING DEPAN -->
+                <!-- ✅ FOTO BARU: NAMA SESUAI YANG KAMU BUAT -->
+                <div class="slide">
+                    <img src="acara-kenaikan-kelas-2026.jpg" alt="Acara Kenaikan Kelas MDTU Sirojul Qur'an th.2026">
+                    <div class="teks-di-foto">Acara Kenaikan Kelas MDTU Sirojul Qur'an th.2026</div>
+                </div>
                 <div class="slide">
                     <img src="knk1.jpg" alt="Kegiatan Terbaru">
-                    <!-- TIDAK ADA JUDUL -->
+                    <!-- TANPA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="knk2.jpg" alt="Kegiatan Keagamaan">
-                    <!-- TIDAK ADA JUDUL -->
+                    <!-- TANPA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="kbm.png" alt="Kegiatan Belajar Mengajar">
@@ -402,7 +405,7 @@
                 </div>
                 <div class="slide">
                     <img src="pengurus.png" alt="Struktur Pengurus">
-                    <!-- TIDAK ADA JUDUL -->
+                    <!-- TANPA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
@@ -411,9 +414,10 @@
             </div>
         </div>
 
-        <!-- 4. TITIK PENANDA -->
+        <!-- 4. TITIK PENANDA - SUDAH 6 BUAH -->
         <div class="titik-wadah">
             <span class="titik aktif"></span>
+            <span class="titik"></span>
             <span class="titik"></span>
             <span class="titik"></span>
             <span class="titik"></span>
@@ -498,7 +502,7 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- SCRIPT SENTUH YANG SUDAH DIPERBAIKI & DIPASTIKAN BERFUNGSI -->
+    <!-- SCRIPT SENTUH - SUDAH DISESUAIKAN JUMLAH FOTO JADI 6 -->
     <script>
         const slider = document.getElementById('slider');
         const daftarTitik = document.querySelectorAll('.titik');
@@ -506,7 +510,7 @@
         let titikAwalX = 0;
         let titikSekarangX = 0;
         let selisih = 0;
-        const TOTAL_GAMBAR = 5;
+        const TOTAL_GAMBAR = 6;
 
         // MULAI SENTUH
         document.getElementById('areaGeser').addEventListener('touchstart', function(e) {
@@ -532,7 +536,7 @@
             }
 
             // PASANG POSISI GAMBAR
-            slider.style.transform = 'translateX(-' + (halamanSekarang * 20) + '%)';
+            slider.style.transform = 'translateX(-' + (halamanSekarang * 16.66) + '%)';
 
             // UBAH TITIK AKTIF
             daftarTitik.forEach((dot, indeks) => {
