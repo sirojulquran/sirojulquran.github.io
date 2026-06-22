@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif';
+            font-family: 'Arial', sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -119,10 +119,10 @@
             padding-top: 130px;
         }
 
-        /* ✅ BAGIAN ANIMASI TEKS - SUDAH DIPERBAIKI AGAR MUNCUL ✅ */
+        /* ✅ KOTAK ANIMASI - PASTI ADA ISINYA ✅ */
         .animasi-teks {
-            background-color: rgba(15, 118, 110, 0.1); /* Warna hijau muda persis contoh */
-            color: #0F766E; /* Tulisan hijau tua */
+            background-color: rgba(15, 118, 110, 0.1);
+            color: #0F766E;
             padding: 12px 25px;
             border-radius: 25px;
             font-size: 17px;
@@ -134,20 +134,10 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            position: relative;
         }
 
-        .animasi-teks span {
+        #teks-ganti {
             display: inline-block;
-            animation: gantiTeks 6s infinite; /* Total 6 detik, ganti tiap 3 detik */
-        }
-
-        @keyframes gantiTeks {
-            0% { transform: translateY(0); content: "✨ Yayasan Sirojul Qur'an Hikmaniyah"; }
-            45% { transform: translateY(0); content: "✨ Yayasan Sirojul Qur'an Hikmaniyah"; }
-            50% { transform: translateY(-100%); content: "✨ MDTU Sirojul Qur'an"; }
-            95% { transform: translateY(-100%); content: "✨ MDTU Sirojul Qur'an"; }
-            100% { transform: translateY(0); content: "✨ Yayasan Sirojul Qur'an Hikmaniyah"; }
         }
 
         #beranda h1 {
@@ -398,12 +388,12 @@
         </div>
     </nav>
 
-    <!-- BERANDA - ANIMASI DI TEMPAT TANDA PANAH ✅ SUDAH ADA ISINYA ✅ -->
+    <!-- BERANDA - ANIMASI DI TEMPAT TANDA PANAH ✅ -->
     <section id="beranda">
 
-        <!-- ✅ TULISAN ANIMASI MUNCUL DI SINI ✅ -->
+        <!-- ✅ TULISAN ANIMASI SUDAH DIJAMIN MUNCUL ✅ -->
         <div class="animasi-teks">
-            <span></span>
+            <span id="teks-ganti">✨ Yayasan Sirojul Qur'an Hikmaniyah</span>
         </div>
         
         <!-- 1. TULISAN UTAMA -->
@@ -526,8 +516,24 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- SCRIPT SENTUH -->
+    <!-- ✅ SCRIPT ANIMASI TEKS - PASTI JALAN ✅ -->
     <script>
+        // Daftar teks yang mau ditampilkan
+        const teksList = [
+            "✨ Yayasan Sirojul Qur'an Hikmaniyah",
+            "✨ MDTU Sirojul Qur'an"
+        ];
+        let indeks = 0;
+        const elemen = document.getElementById("teks-ganti");
+
+        // Ganti setiap 3000 ms = 3 detik
+        setInterval(() => {
+            indeks = (indeks + 1) % teksList.length;
+            elemen.textContent = teksList[indeks];
+        }, 3000);
+
+
+        <!-- SCRIPT SLIDER -->
         const slider = document.getElementById('slider');
         const daftarTitik = document.querySelectorAll('.titik');
         let halamanSekarang = 0;
