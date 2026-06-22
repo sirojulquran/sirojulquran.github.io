@@ -73,7 +73,8 @@
         /* === BAGIAN UMUM === */
         section {
             padding: 100px 20px 70px;
-            max-width: 1200px; margin: 0 auto;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         h2 {
@@ -160,7 +161,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             position: relative;
             background-color: #ECFDF5;
-            touch-action: none;
+            touch-action: none; /* Wajib: biar browser tidak mengganggu geseran */
         }
 
         .slider-isi {
@@ -182,11 +183,11 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            pointer-events: none;
+            pointer-events: none; /* Gambar tidak menghalangi sentuhan */
             user-select: none;
         }
 
-        /* TULISAN DI DALAM FOTO - SESUAI PERMINTAAN */
+        /* TULISAN DI DALAM FOTO - HANYA UNTUK KBM DAN GEDUNG */
         .teks-di-foto {
             position: absolute;
             bottom: 0;
@@ -383,13 +384,13 @@
         <!-- 2. JUDUL "ACARA KEGIATAN" DI ATAS SLIDER -->
         <div class="judul-slider">Acara Kegiatan</div>
 
-        <!-- 3. SLIDER FOTO - NAMA FILE SUDAH DISESUAIKAN -->
+        <!-- 3. SLIDER FOTO - FOTO BARU DIPALING ATAS -->
         <div class="slider-wadah" id="areaGeser">
             <div class="slider-isi" id="slider">
-                <!-- ✅ FOTO BARU: NAMA SESUAI YANG KAMU BUAT -->
+                <!-- ✅ FOTO BARU: PALING ATAS / PALING BARU, TANPA JUDUL -->
                 <div class="slide">
                     <img src="acara-kenaikan-kelas-2026.jpg" alt="Acara Kenaikan Kelas MDTU Sirojul Qur'an th.2026">
-                    <div class="teks-di-foto">Acara Kenaikan Kelas MDTU Sirojul Qur'an th.2026</div>
+                    <!-- TIDAK ADA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="knk1.jpg" alt="Kegiatan Terbaru">
@@ -414,7 +415,7 @@
             </div>
         </div>
 
-        <!-- 4. TITIK PENANDA - SUDAH 6 BUAH -->
+        <!-- 4. TITIK PENANDA - SUDAH DIUBAH JADI 6 TITIK -->
         <div class="titik-wadah">
             <span class="titik aktif"></span>
             <span class="titik"></span>
@@ -510,7 +511,7 @@
         let titikAwalX = 0;
         let titikSekarangX = 0;
         let selisih = 0;
-        const TOTAL_GAMBAR = 6;
+        const TOTAL_GAMBAR = 6; <!-- DIUBAH JADI 6 -->
 
         // MULAI SENTUH
         document.getElementById('areaGeser').addEventListener('touchstart', function(e) {
@@ -536,7 +537,7 @@
             }
 
             // PASANG POSISI GAMBAR
-            slider.style.transform = 'translateX(-' + (halamanSekarang * 16.66) + '%)';
+            slider.style.transform = 'translateX(-' + (halamanSekarang * 16.66) + '%)'; <!-- DISESUAIKAN -->
 
             // UBAH TITIK AKTIF
             daftarTitik.forEach((dot, indeks) => {
