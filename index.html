@@ -119,15 +119,40 @@
             padding-top: 130px;
         }
 
-        .tag-selamat {
-            display: inline-block;
+        /* ✅ BAGIAN ANIMASI TEKS (DIUBAH JADI 3 DETIK) ✅ */
+        .animasi-teks {
             background-color: rgba(15, 118, 110, 0.1);
             color: #0F766E;
-            padding: 8px 20px;
+            padding: 10px 25px;
             border-radius: 25px;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 500;
-            margin-bottom: 25px;
+            margin: 0 auto 25px auto;
+            max-width: 500px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .animasi-teks span {
+            display: inline-block;
+            animation: gantiTeks 6s infinite; /* Total siklus 6 detik, ganti tiap 3 detik */
+        }
+
+        @keyframes gantiTeks {
+            0%, 45% {
+                transform: translateY(0);
+                content: "Yayasan Sirojul Qur'an Hikmaniyah";
+            }
+            50%, 95% {
+                transform: translateY(-100%);
+                content: "MDTU Sirojul Qur'an";
+            }
+            100% {
+                transform: translateY(0);
+            }
         }
 
         #beranda h1 {
@@ -161,7 +186,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             position: relative;
             background-color: #ECFDF5;
-            touch-action: none; /* Wajib: biar browser tidak mengganggu geseran */
+            touch-action: none;
         }
 
         .slider-isi {
@@ -183,7 +208,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            pointer-events: none; /* Gambar tidak menghalangi sentuhan */
+            pointer-events: none;
             user-select: none;
         }
 
@@ -355,6 +380,10 @@
                 height: calc(100vw * 9 / 16);
                 max-height: 400px;
             }
+            .animasi-teks {
+                font-size: 15px;
+                padding: 8px 15px;
+            }
         }
     </style>
 </head>
@@ -374,9 +403,13 @@
         </div>
     </nav>
 
-    <!-- BERANDA - SUSUNAN SUDAH SESUAI -->
+    <!-- BERANDA - ANIMASI DI TEMPAT TANDA PANAH -->
     <section id="beranda">
-        <div class="tag-selamat">✨ Selamat Datang di Lembaga Pendidikan Islam</div>
+
+        <!-- ✅ ANIMASI TEKS SUDAH DIUBAH: GANTI TIAP 3 DETIK ✅ -->
+        <div class="animasi-teks">
+            <span></span>
+        </div>
         
         <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
@@ -384,21 +417,18 @@
         <!-- 2. JUDUL "ACARA KEGIATAN" DI ATAS SLIDER -->
         <div class="judul-slider">Acara Kegiatan</div>
 
-        <!-- 3. SLIDER FOTO - FOTO BARU DIPALING ATAS -->
+        <!-- 3. SLIDER FOTO - FOTO BARU DIPALING ATAS, TANPA JUDUL -->
         <div class="slider-wadah" id="areaGeser">
             <div class="slider-isi" id="slider">
-                <!-- ✅ FOTO BARU: PALING ATAS / PALING BARU, TANPA JUDUL -->
+                <!-- ✅ FOTO BARU: NAMA SESUAI YANG KAMU BUAT -->
                 <div class="slide">
                     <img src="acara-kenaikan-kelas-2026.jpg" alt="Acara Kenaikan Kelas MDTU Sirojul Qur'an th.2026">
-                    <!-- TIDAK ADA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="knk1.jpg" alt="Kegiatan Terbaru">
-                    <!-- TANPA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="knk2.jpg" alt="Kegiatan Keagamaan">
-                    <!-- TANPA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="kbm.png" alt="Kegiatan Belajar Mengajar">
@@ -406,7 +436,6 @@
                 </div>
                 <div class="slide">
                     <img src="pengurus.png" alt="Struktur Pengurus">
-                    <!-- TANPA JUDUL -->
                 </div>
                 <div class="slide">
                     <img src="Gedung.png" alt="Gedung Sirojul Qur'an">
@@ -415,7 +444,7 @@
             </div>
         </div>
 
-        <!-- 4. TITIK PENANDA - SUDAH DIUBAH JADI 6 TITIK -->
+        <!-- 4. TITIK PENANDA - SUDAH 6 BUAH -->
         <div class="titik-wadah">
             <span class="titik aktif"></span>
             <span class="titik"></span>
@@ -511,7 +540,7 @@
         let titikAwalX = 0;
         let titikSekarangX = 0;
         let selisih = 0;
-        const TOTAL_GAMBAR = 6; <!-- DIUBAH JADI 6 -->
+        const TOTAL_GAMBAR = 6;
 
         // MULAI SENTUH
         document.getElementById('areaGeser').addEventListener('touchstart', function(e) {
@@ -537,7 +566,7 @@
             }
 
             // PASANG POSISI GAMBAR
-            slider.style.transform = 'translateX(-' + (halamanSekarang * 16.66) + '%)'; <!-- DISESUAIKAN -->
+            slider.style.transform = 'translateX(-' + (halamanSekarang * 16.66) + '%)';
 
             // UBAH TITIK AKTIF
             daftarTitik.forEach((dot, indeks) => {
