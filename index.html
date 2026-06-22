@@ -19,16 +19,16 @@
             line-height: 1.7;
         }
 
-        /* === NAVIGASI === */
+        /* === NAVIGASI - WARNA HIJAU MAROON SAMA PERSIS === */
         nav {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: #3A5F41; /* SAMA PERSIS DENGAN KOTAK TEKS */
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 999;
             padding: 12px 20px;
-            box-shadow: 0 2px 15px rgba(15, 118, 110, 0.15);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
         }
 
         .nav-container {
@@ -57,22 +57,23 @@
             gap: 35px;
         }
 
+        /* Tulisan menu jadi PUTIH biar jelas di latar hijau maroon */
         .nav-kanan a {
             text-decoration: none;
-            color: #1E293B;
+            color: #FFFFFF;
             font-weight: 500;
             font-size: 18px;
             transition: 0.3s;
         }
 
         .nav-kanan a:hover {
-            color: #0F766E;
+            color: #A7F3D0; /* Hijau muda saat disentuh */
             transform: translateY(-2px);
         }
 
         /* === BAGIAN UMUM === */
         section {
-            padding: 80px 20px 70px; /* ⚡ PERKECIL JARAK ATAS */
+            padding: 80px 20px 70px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -116,10 +117,10 @@
         /* === BERANDA === */
         #beranda {
             text-align: center;
-            padding-top: 90px; /* ⚡ JARAK DEKAT DENGAN MENU ATAS */
+            padding-top: 90px; /* Jarak dekat dengan menu atas */
         }
 
-        /* ✅ HIJAU MAROON BENAR: ADA HIJAU, GELAP, SEDIKIT KEMERAHAN, TIDAK COKLAT ✅ */
+        /* ✅ HIJAU MAROON - SAMA DENGAN MENU ✅ */
         .animasi-teks {
             background-color: #3A5F41; 
             color: #FFFFFF; 
@@ -374,7 +375,7 @@
 </head>
 <body>
 
-    <!-- NAVIGASI - LOGO SAJA -->
+    <!-- NAVIGASI - SUDAH HIJAU MAROON SAMA -->
     <nav>
         <div class="nav-container">
             <div class="nav-kiri">
@@ -388,21 +389,16 @@
         </div>
     </nav>
 
-    <!-- BERANDA - ANIMASI DI TEMPAT TANDA PANAH ✅ JARAK SUDAH DEKAT ✅ -->
+    <!-- BERANDA - WARNA DAN JARAK SUDAH PAS -->
     <section id="beranda">
-
-        <!-- ✅ HIJAU MAROON BENAR + JARAK PAS ✅ -->
         <div class="animasi-teks">
             <span id="teks-ganti">✨ Yayasan Sirojul Qur'an Hikmaniyah</span>
         </div>
         
-        <!-- 1. TULISAN UTAMA -->
         <h1>Selamat Datang di <span>Sirojul Qur'an</span></h1>
 
-        <!-- 2. JUDUL "ACARA KEGIATAN" DI ATAS SLIDER -->
         <div class="judul-slider">Acara Kegiatan</div>
 
-        <!-- 3. SLIDER FOTO - FOTO BARU DIPALING ATAS, TANPA JUDUL -->
         <div class="slider-wadah" id="areaGeser">
             <div class="slider-isi" id="slider">
                 <div class="slide">
@@ -428,7 +424,6 @@
             </div>
         </div>
 
-        <!-- 4. TITIK PENANDA -->
         <div class="titik-wadah">
             <span class="titik aktif"></span>
             <span class="titik"></span>
@@ -438,7 +433,6 @@
             <span class="titik"></span>
         </div>
 
-        <!-- 5. ALAMAT -->
         <div class="alamat-bawah">
             Lembaga Pendidikan Islam | Pamuruyan<br>
             - Cibadak - Sukabumi
@@ -518,7 +512,6 @@
 
     <!-- ✅ SCRIPT ANIMASI TEKS ✅ -->
     <script>
-        // Daftar teks yang mau ditampilkan
         const teksList = [
             "✨ Yayasan Sirojul Qur'an Hikmaniyah",
             "✨ MDTU Sirojul Qur'an"
@@ -526,14 +519,12 @@
         let indeks = 0;
         const elemen = document.getElementById("teks-ganti");
 
-        // Ganti setiap 3000 ms = 3 detik
         setInterval(() => {
             indeks = (indeks + 1) % teksList.length;
             elemen.textContent = teksList[indeks];
         }, 3000);
 
 
-        <!-- SCRIPT SLIDER -->
         const slider = document.getElementById('slider');
         const daftarTitik = document.querySelectorAll('.titik');
         let halamanSekarang = 0;
