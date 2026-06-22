@@ -72,7 +72,7 @@
 
         /* === BAGIAN UMUM === */
         section {
-            padding: 100px 20px 70px;
+            padding: 80px 20px 70px; /* ⚡ PERKECIL JARAK ATAS */
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -116,13 +116,13 @@
         /* === BERANDA === */
         #beranda {
             text-align: center;
-            padding-top: 130px;
+            padding-top: 90px; /* ⚡ JARAK DEKAT DENGAN MENU ATAS */
         }
 
-        /* ✅ KOTAK ANIMASI - PASTI ADA ISINYA ✅ */
+        /* ✅ HIJAU MAROON BENAR: ADA HIJAU, GELAP, SEDIKIT KEMERAHAN, TIDAK COKLAT ✅ */
         .animasi-teks {
-            background-color: rgba(15, 118, 110, 0.1);
-            color: #0F766E;
+            background-color: #3A5F41; 
+            color: #FFFFFF; 
             padding: 12px 25px;
             border-radius: 25px;
             font-size: 17px;
@@ -164,7 +164,7 @@
         .slider-wadah {
             width: 100%;
             max-width: 900px;
-            height: 506px;
+            height: auto;
             margin: 0 auto 15px auto;
             border-radius: 20px;
             overflow: hidden;
@@ -175,14 +175,14 @@
         }
 
         .slider-isi {
-            width: 600%; /* Jadi 6 Foto */
+            width: 600%; 
             height: 100%;
             display: flex;
             transition: transform 0.4s ease;
         }
 
         .slide {
-            width: 16.66%; /* 100 / 6 = 16.66% */
+            width: 16.66%; 
             height: 100%;
             position: relative;
             flex-shrink: 0;
@@ -388,10 +388,10 @@
         </div>
     </nav>
 
-    <!-- BERANDA - ANIMASI DI TEMPAT TANDA PANAH ✅ -->
+    <!-- BERANDA - ANIMASI DI TEMPAT TANDA PANAH ✅ JARAK SUDAH DEKAT ✅ -->
     <section id="beranda">
 
-        <!-- ✅ TULISAN ANIMASI SUDAH DIJAMIN MUNCUL ✅ -->
+        <!-- ✅ HIJAU MAROON BENAR + JARAK PAS ✅ -->
         <div class="animasi-teks">
             <span id="teks-ganti">✨ Yayasan Sirojul Qur'an Hikmaniyah</span>
         </div>
@@ -516,7 +516,7 @@
         <p>© 2026 Sirojul Qur'an | Semua Hak Dilindungi</p>
     </footer>
 
-    <!-- ✅ SCRIPT ANIMASI TEKS - PASTI JALAN ✅ -->
+    <!-- ✅ SCRIPT ANIMASI TEKS ✅ -->
     <script>
         // Daftar teks yang mau ditampilkan
         const teksList = [
